@@ -28,14 +28,14 @@ const MainFeed = () => {
     else {
         return (
             <Box id='main-feed-box' className='main-feed-box' >
-                <Grid container spacing={2}>
-                    {allArticles.map((article) => {
-                        return <div key={article.article_id}>
-                            <OneArticle article={article} />
-                            <ArticleComments article={article} />
-                        </div>
-                    })}
-                </Grid>
+
+                {allArticles.map((article) => {
+                    return <Grid container spacing={2} key={article.article_id}><OneArticle article={article} key={article.id} />
+                        <ArticleComments article={article} key={article} />
+                    </Grid>
+
+                })}
+
             </Box >)
     }
 
