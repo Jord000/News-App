@@ -5,6 +5,7 @@ import { UsernameProvider } from '../contexts/UsernameContext'
 import MainFeed from './main-feed/MainFeed';
 import Header from './entry-login/Header';
 import ArticleInDetail from './main-feed/ArticleInDetail';
+import NavBar from './Navigation/NavBar';
 
 function App() {
     return <>
@@ -13,9 +14,9 @@ function App() {
                 <Routes>
                     <Route path="/" element={<EntryPage />} />
                     <Route path="/login" element={<><Header /><LogInPage /></>} />
-                    <Route path="/myfeed" element={<><Header /><MainFeed /></>} />
-                    <Route path="/article" element={<><Header /><ArticleInDetail /></>} >
-                        <Route path="?id" element={<><Header /><ArticleInDetail /></>} />
+                    <Route path="/myfeed" element={<><Header /><NavBar /><MainFeed /></>} />
+                    <Route path="/article" element={<><Header /><NavBar /><ArticleInDetail /></>} >
+                        <Route path="?id" element={<><Header /><NavBar /><ArticleInDetail /></>} />
                     </Route>
                 </Routes>
             </UsernameProvider>
