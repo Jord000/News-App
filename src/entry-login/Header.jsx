@@ -11,7 +11,10 @@ const Header = () => {
 
         return <> <h1 className="title">THE NEWS...</h1></>
 
-    } else { return <div className="header-container"><h1>THE NEWS...</h1> <p className="logged-in-text">{username} is logged in</p ></div> }
+    } else {
+        return <div className="header-container"><h1>THE NEWS...</h1>
+            <p className="logged-in-text">{username} is logged in</p ></div>
+    }
 
 
 }

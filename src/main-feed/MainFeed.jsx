@@ -3,12 +3,16 @@ import { useEffect, useState } from "react";
 import OneArticle from "./OneArticle";
 import ArticleComments from "./ArticleComments.jsx";
 import { Box, Grid, CircularProgress } from "@mui/material";
+import { useContext } from "react";
+import { UsernameContext } from "../../contexts/UsernameContext.jsx";
+import { useNavigate } from "react-router-dom";
 
 
 const MainFeed = () => {
     const [allArticles, setAllArticles] = useState([])
     const [isLoading, setIsLoading] = useState(true)
-
+    const { username } = useContext(UsernameContext);
+    const navigate = useNavigate()
 
     useEffect(() => {
         getArticles().then((articles) => {
@@ -18,8 +22,10 @@ const MainFeed = () => {
         });
     }, []);
 
-
-    if (isLoading) {
+    if (!username) {
+        navigate('/login')
+    }
+    else if (isLoading) {
         return (
             <Box sx={{ display: 'flex' }}>
                 <CircularProgress />

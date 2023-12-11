@@ -33,9 +33,9 @@ const NavBar = () => {
                 open={open}
                 onClose={handleClose}
             >
-                <MenuItem onClick={navigateToMyFeed}>My Feed</MenuItem>
+                <MenuItem onClick={() => { navigateToMyFeed(), handleClose() }}>My Feed</MenuItem>
             </Menu>
-        </div>
+        </div >
     );
 }
 
