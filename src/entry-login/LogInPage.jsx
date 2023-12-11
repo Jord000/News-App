@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { UsernameContext } from "../../contexts/UsernameContext.jsx";
-import Header from "./Header.jsx"
-import { Select, MenuItem, FormControl, InputLabel, Box, Button } from '@mui/material';
+import { Select, MenuItem, FormControl, InputLabel, Box, Button, LinearProgress } from '@mui/material';
 import { getUsernames } from '../../api/api.js'
 import { useNavigate } from "react-router-dom";
 
@@ -11,10 +10,13 @@ const LogInPage = () => {
     const [allUsers, setAllUsers] = useState([])
     const { setUsername } = useContext(UsernameContext);
     const navigate = useNavigate()
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         getUsernames().then((users) => {
             setAllUsers(users);
+        }).then(() => {
+            setIsLoading(false)
         });
     }, []);
 
@@ -28,7 +30,13 @@ const LogInPage = () => {
         navigate("/myfeed")
     }
 
-    return <>
+    if (isLoading) {
+        return (
+            <Box sx={{ width: '100%' }}>
+                <LinearProgress />
+            </Box>)
+    }
+    else return <>
 
         <h2>Login to see your feed...</h2>
 
