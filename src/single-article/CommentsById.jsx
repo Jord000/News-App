@@ -24,7 +24,7 @@ const CommentsById = ({ id }) => {
     } else return (<>
         <h4>{`Article ${id} comments`}</h4>
         {comments.map((comment) => {
-            return <div style={{ margin: '5px' }}><CommentBody comment={comment} /></div>
+            return <div style={{ margin: '5px' }} key={comment.comment_id} ><CommentBody comment={comment} /></div>
         })}
     </>
     )
