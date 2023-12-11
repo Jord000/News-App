@@ -12,7 +12,6 @@ export const getUsernames = () => {
 
 export const getArticles = () => {
     return newsApi.get("/articles").then(({ data }) => {
-        console.log(data)
         return data.articles;
     });
 };

@@ -9,6 +9,7 @@ const OneArticle = ({ article }) => {
             <p className="article-detail">Posted by author - {author}</p>
             <p className="article-detail">Date Posted- {created_at.substring(0, 10)}</p>
             <p className="small-article-body">{body}</p>
+            <link></link>
         </Grid>
     </>
 }
