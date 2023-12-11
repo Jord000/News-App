@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import { useContext } from "react";
-import { UsernameContext } from "../../contexts/UsernameContext";
-import Header from "./Header"
-import { Select, MenuItem, FormControl, InputLabel, Box } from '@mui/material';
+import { UsernameContext } from "../../contexts/UsernameContext.jsx";
+import Header from "./Header.jsx"
+import { Select, MenuItem, FormControl, InputLabel, Box, Button } from '@mui/material';
 import { getUsernames } from '../../api/api.js'
+import { useNavigate } from "react-router-dom";
 
 const LogInPage = () => {
     const [userSelected, setUserSelected] = useState('username')
     const [allUsers, setAllUsers] = useState([])
     const { setUsername } = useContext(UsernameContext);
+    const navigate = useNavigate()
 
     useEffect(() => {
         getUsernames().then((users) => {
@@ -17,29 +19,35 @@ const LogInPage = () => {
     }, []);
 
     const handleChange = (event) => {
-        setUserSelected(event.target.value);
+        setUserSelected(event.target.value)
+
     }
 
+    const handleLogIn = (event) => {
+        setUsername(userSelected)
+        navigate("/myfeed")
+    }
 
     return <>
-        <Header />
+
         <h2>Login to see your feed...</h2>
 
         <Box sx={{ minWidth: 120 }}>
-            <FormControl fullWidth>
+            <FormControl style={{ minWidth: 300 }}>
                 <InputLabel id="demo-simple-select-label">Username</InputLabel>
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
-                    value=""
+                    defaultValue=""
                     label="Username"
                     onChange={handleChange}
-                >
+                ><MenuItem value=''>Username</MenuItem>
                     {allUsers.map((user) => {
-                        return <MenuItem value={user.username}>Username:{user.username} Name:{user.name}</MenuItem>
+                        return <MenuItem key={user.username} value={user.username}>Username:{user.username} Name:{user.name}</MenuItem>
                     })}
 
                 </Select>
+                <Button variant="contained" onClick={handleLogIn}>Lets Go!</Button>
             </FormControl>
         </Box>
     </>

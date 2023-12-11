@@ -1,0 +1,45 @@
+* {
+    font-family: 'Quicksand', sans-serif;
+}
+
+body {
+    background-color: rgb(244, 230, 250);
+}
+
+.main-feed-box {
+    margin: 10px;
+    border: rgb(169, 168, 179) solid 1px;
+    padding: 10;
+}
+
+p {
+    margin: 0;
+}
+
+h2 {
+    margin: 5px;
+    font-size: 20px;
+}
+
+.css-mhc70k-MuiGrid-root {
+    min-width: 300px;
+    display: flex;
+    margin-left: 0;
+    flex-wrap: wrap;
+    padding: 10px;
+
+}
+
+.css-vok43g-MuiGrid-root {
+    background-color: rgb(225, 217, 226);
+    padding: 10px;
+}
+
+.small-article-body {
+    font-size: 14px;
+}
+
+.article-detail {
+    font-weight: 500;
+    padding: 3px
+}
