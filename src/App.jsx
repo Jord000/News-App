@@ -4,8 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { UsernameProvider } from '../contexts/UsernameContext'
 import MainFeed from './main-feed/MainFeed';
 import Header from './entry-login/Header';
-import ArticleInDetail from './main-feed/ArticleInDetail';
-import NavBar from './Navigation/NavBar';
+import ArticleInDetail from './single-article/ArticleInDetail';
+import NavBar from './navigation/NavBar';
 
 function App() {
     return <>

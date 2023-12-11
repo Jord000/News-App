@@ -22,3 +22,5 @@ export const getArticleById = (id) => {
         return article
     })
 }
+
+export const getCommentsById
