@@ -15,3 +15,10 @@ export const getArticles = () => {
         return data.articles;
     });
 };
+
+export const getArticleById = (id) => {
+    const articleName = `article${id}`
+    return newsApi.get(`/articles/${id}`).then(({ data: { [articleName]: article } }) => {
+        return article
+    })
+}

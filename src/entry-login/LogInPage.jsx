@@ -11,6 +11,8 @@ const LogInPage = () => {
     const { setUsername } = useContext(UsernameContext);
     const navigate = useNavigate()
     const [isLoading, setIsLoading] = useState(true)
+    const [buttonColor, setButtonColor] = useState('primary')
+    const [isError, setIsError] = useState(false)
 
     useEffect(() => {
         getUsernames().then((users) => {
@@ -22,12 +24,22 @@ const LogInPage = () => {
 
     const handleChange = (event) => {
         setUserSelected(event.target.value)
+        if (event.target.value !== '' && event.target.value !== 'username') {
+            setIsError(false)
+            setButtonColor('primary')
 
+        }
     }
 
     const handleLogIn = (event) => {
-        setUsername(userSelected)
-        navigate("/myfeed")
+        if (!userSelected || userSelected === 'username') {
+            event.preventDefault()
+            setIsError(true)
+            setButtonColor('error')
+        } else {
+            setUsername(userSelected)
+            navigate("/myfeed")
+        }
     }
 
     if (isLoading) {
@@ -38,23 +50,25 @@ const LogInPage = () => {
     }
     else return <>
 
-        <h2>Login to see your feed...</h2>
+        <h2 className="welcome-login">Login to see your feed...</h2>
 
         <Box sx={{ minWidth: 120 }}>
             <FormControl style={{ minWidth: 300 }}>
-                <InputLabel id="demo-simple-select-label">Username</InputLabel>
+                <InputLabel id="select-label">Username</InputLabel>
                 <Select
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    defaultValue=""
+                    labelId="select-label"
+                    id="simple-select"
+                    defaultValue=''
                     label="Username"
+                    color={buttonColor}
                     onChange={handleChange}
-                ><MenuItem value=''>Username</MenuItem>
+                >
                     {allUsers.map((user) => {
-                        return <MenuItem key={user.username} value={user.username}>Username:{user.username} Name:{user.name}</MenuItem>
+                        return <MenuItem key={user.username} value={user.username}>{user.username} --- {user.name}</MenuItem>
                     })}
 
                 </Select>
+                {isError && <p style={{ color: 'red' }}>Please select a username</p>}
                 <Button variant="contained" onClick={handleLogIn}>Lets Go!</Button>
             </FormControl>
         </Box>

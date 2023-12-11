@@ -8,7 +8,7 @@ const EntryPage = () => {
     }
 
     return <>
-        <h1>Welcome to... THE NEWS</h1>
+        <h1>Welcome to... <br></br>THE NEWS</h1>
 
         <Button variant="contained" onClick={proceedClick}>Let me see what everyone is talking about</Button>
     </>

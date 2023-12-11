@@ -6,6 +6,16 @@ body {
     background-color: rgb(244, 230, 250);
 }
 
+.header-container {
+    display: block;
+}
+
+.title {
+    display: block
+}
+
+.logged-in-text {}
+
 .main-feed-box {
     margin: 10px;
     border: rgb(169, 168, 179) solid 1px;
@@ -43,4 +53,34 @@ h2 {
 .article-detail {
     font-weight: 500;
     padding: 3px
+}
+
+.article-image {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 90%;
+    justify-content: center;
+}
+
+.found-article-by-id {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+.found-article-body {
+    font-size: 16px;
+    margin: 10px
+}
+
+.welcome-login {
+    margin: 5px;
+    margin-bottom: 50px;
+}
+
+.read-more {
+    text-align: right;
+    font-size: 10px;
 }
