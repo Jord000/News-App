@@ -1,90 +1,110 @@
 * {
-    font-family: 'Quicksand', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 body {
-    background-color: rgb(244, 230, 250);
+  background-color: rgb(244, 230, 250);
 }
 
 .header-container {
-    display: flex;
-    flex-wrap: wrap;
-
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .title {
-    font-size: 2.2em;
+  font-size: 2.2em;
+  margin-bottom: 10px;
 }
 
 .logged-in-text {
-    margin-left: auto;
+  margin-left: auto;
 }
 
 .main-feed-box {
-    margin: 10px;
-    border: rgb(169, 168, 179) solid 1px;
-    padding: 10;
+  margin: 10px;
+  border: rgb(169, 168, 179) solid 1px;
+  padding: 10;
 }
 
 p {
-    margin: 0;
+  margin: 0;
 }
 
 h2 {
-    margin: 5px;
-    font-size: 20px;
+  margin: 5px;
+  font-size: 20px;
 }
 
 .css-mhc70k-MuiGrid-root {
-    min-width: 300px;
-    display: flex;
-    margin-left: 0;
-    flex-wrap: wrap;
-    padding: 10px;
-
+  min-width: 300px;
+  display: flex;
+  margin-left: 0;
+  flex-wrap: wrap;
+  padding: 10px;
 }
 
 .css-vok43g-MuiGrid-root {
-    background-color: rgb(225, 217, 226);
-    padding: 10px;
+  background-color: rgb(225, 217, 226);
+  padding: 10px;
 }
 
 .small-article-body {
-    font-size: 14px;
-    padding-bottom: 10px;
+  font-size: 14px;
+  padding-bottom: 10px;
+}
+
+.article-author {
+  margin-left: 5px;
+  font-weight: 500;
+  font-size: 11px;
 }
 
 .article-detail {
-    font-weight: 500;
-    padding: 3px
+  font-weight: 500;
+  padding: 3px;
 }
 
 .article-image {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    width: 90%;
-    justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 90%;
+  justify-content: center;
 }
 
 .found-article-by-id {
-    display: flex;
-    flex-wrap: wrap;
-    height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
 }
 
 .found-article-body {
-    font-size: 16px;
-    margin: 10px
+  font-size: 16px;
+  margin: 10px;
+}
+
+.found-article-votes {
+  margin-left: 10px;
 }
 
 .welcome-login {
-    margin: 5px;
-    margin-bottom: 50px;
+  margin: 5px;
+  margin-bottom: 50px;
 }
 
 .read-more {
-    text-align: right;
-    font-size: 10px;
+  text-align: right;
+  font-size: 10px;
+}
+
+.thumbs-up {
+display: inline;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.thumbs-down {
+    display: inline;
+  margin-left: 5px;
+  margin-right: 5px;
 }

@@ -1,24 +1,41 @@
-import axios from "axios";
+import axios from 'axios'
 
 const newsApi = axios.create({
-    baseURL: "https://news-app-87li.onrender.com/api"
-});
+  baseURL: 'https://news-app-87li.onrender.com/api',
+})
 
 export const getUsernames = () => {
-    return newsApi.get("/users").then(({ data }) => {
-        return data.users;
-    });
-};
+  return newsApi.get('/users').then(({ data }) => {
+    return data.users
+  })
+}
 
 export const getArticles = () => {
-    return newsApi.get("/articles").then(({ data }) => {
-        return data.articles;
-    });
-};
+  return newsApi.get('/articles').then(({ data }) => {
+    return data.articles
+  })
+}
 
 export const getArticleById = (id) => {
-    const articleName = `article${id}`
-    return newsApi.get(`/articles/${id}`).then(({ data: { [articleName]: article } }) => {
-        return article
+  const articleName = `article${id}`
+  return newsApi
+    .get(`/articles/${id}`)
+    .then(({ data: { [articleName]: article } }) => {
+      return article
     })
+}
+
+export const getCommentsById = (id) => {
+  return newsApi
+    .get(`/articles/${id}/comments`)
+    .then(({ data: { comments } }) => {
+      return comments
+    })
+}
+
+export const addVotesToArticleId = (votes, id) => {
+  const patchBody = { inc_votes: votes }
+  return newsApi.patch(`/articles/${id}`,patchBody).then((data) => {
+    return data
+  })
 }
