@@ -15,9 +15,8 @@ function App() {
                     <Route path="/" element={<EntryPage />} />
                     <Route path="/login" element={<><Header /><LogInPage /></>} />
                     <Route path="/myfeed" element={<><Header /><NavBar /><MainFeed /></>} />
-                    <Route path="/article" element={<><Header /><NavBar /><ArticleInDetail /></>} >
-                        <Route path="?id" element={<><Header /><NavBar /><ArticleInDetail /></>} />
-                    </Route>
+                    <Route path="/myfeed/:id" element={<><Header /><NavBar /><ArticleInDetail /></>} />
+                 
                 </Routes>
             </UsernameProvider>
         </BrowserRouter >

@@ -2,9 +2,13 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { getArticleById } from "../../api/api";
 import { Box, CircularProgress } from "@mui/material";
+import { useParams } from "react-router-dom";
+
 
 
 const ArticleInDetail = () => {
+    const {id} = useParams();
+
     const [foundArticle, setFoundArticle] = useState({
         title: '',
         body: '',
@@ -19,7 +23,6 @@ const ArticleInDetail = () => {
 
     const [isLoading, setIsLoading] = useState(true)
     const [searchParams] = useSearchParams();
-    const id = searchParams.get("id");
 
     useEffect(() => {
         getArticleById(id).then((article) => {
