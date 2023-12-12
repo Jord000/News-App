@@ -27,7 +27,7 @@ export const getArticleById = (id) => {
 
 export const getCommentsById = (id) => {
   return newsApi
-    .get(`/articles/${id}/comments`)
+    .get(`/articles/${id}/comments?sortby`)
     .then(({ data: { comments } }) => {
       return comments
     })
@@ -35,7 +35,14 @@ export const getCommentsById = (id) => {
 
 export const addVotesToArticleId = (votes, id) => {
   const patchBody = { inc_votes: votes }
-  return newsApi.patch(`/articles/${id}`,patchBody).then((data) => {
+  return newsApi.patch(`/articles/${id}`, patchBody).then((data) => {
+    return data
+  })
+}
+
+export const postCommentToArticle = (userComment, username, id) => {
+  const postBody = { username, body:userComment }
+  return newsApi.post(`/articles/${id}/comments`, postBody).then((data) => {
     return data
   })
 }

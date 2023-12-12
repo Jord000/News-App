@@ -20,7 +20,7 @@ const downVote = ()=>{
   return (
     <>
       <Box className="thumbs-up">
-         <p style={{display:'inline',marginRight:'10px'}}>Votes: {currVotes}</p>
+         <p style={{display:'inline',marginRight:'20px'}}>Votes: {currVotes}</p>
         <Fab  size="small" onClick={upVote}>
           <ThumbUpIcon />
         </Fab>

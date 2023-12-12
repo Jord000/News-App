@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import VotingButton from "../../tools-buttons/VotingButton";
 import { useContext } from "react";
 import { UsernameContext } from "../../contexts/UsernameContext";
+import AddComment from "../../tools-buttons/AddComment";
 
 const ArticleInDetail = () => {
     const [foundArticle, setFoundArticle] = useState({})
@@ -41,6 +42,7 @@ const ArticleInDetail = () => {
                 <p className="found-article-body">{foundArticle.body}</p>
                 <div className="found-article-votes"><VotingButton votes={foundArticle.votes} id={id}/></div>
             </div>
+            <AddComment id={id}/>
             <CommentsById id={id} />
         </>
     )
