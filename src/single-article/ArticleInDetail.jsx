@@ -11,6 +11,7 @@ import AddComment from "../../tools-buttons/AddComment";
 const ArticleInDetail = () => {
     const [foundArticle, setFoundArticle] = useState({})
     const [isLoading, setIsLoading] = useState(true)
+    const [commentSeed, setCommentSeed] = useState(false)
     const { username } = useContext(UsernameContext)
     const navigate = useNavigate()
     const {id} = useParams()
@@ -42,8 +43,8 @@ const ArticleInDetail = () => {
                 <p className="found-article-body">{foundArticle.body}</p>
                 <div className="found-article-votes"><VotingButton votes={foundArticle.votes} id={id}/></div>
             </div>
-            <AddComment id={id}/>
-            <CommentsById id={id} />
+            <AddComment  setCommentSeed={setCommentSeed} id={id}/>
+            <CommentsById setCommentSeed={setCommentSeed} commentSeed={commentSeed} id={id} />
         </>
     )
 

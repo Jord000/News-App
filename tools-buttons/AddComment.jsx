@@ -5,11 +5,12 @@ import AddCommentIcon from '@mui/icons-material/AddComment'
 import { postCommentToArticle } from '../api/api'
 
 
-const AddComment = ({ id }) => {
+const AddComment = ({ id, setCommentSeed }) => {
   const { username } = useContext(UsernameContext)
   const [userComment, setUserComment] = useState()
 
   const submitCommentHandler = () => {
+    setCommentSeed(true)
     postCommentToArticle(userComment, username, id)
   }
 

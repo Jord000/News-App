@@ -3,17 +3,19 @@ import { getCommentsById } from "../../api/api";
 import { Box, CircularProgress } from "@mui/material";
 import CommentBody from "./CommentBody";
 
-const CommentsById = ({ id }) => {
+const CommentsById = ({ id , commentSeed, setCommentSeed}) => {
     const [comments, setComments] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+    
 
     useEffect(() => {
         getCommentsById(id).then((comments) => {
             setComments(comments)
         }).then(() => {
+            setCommentSeed(false)
             setIsLoading(false)
         });
-    }, []);
+    }, [commentSeed]);
 
 
     if (isLoading) {
