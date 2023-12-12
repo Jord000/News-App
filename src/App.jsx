@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { UsernameProvider } from '../contexts/UsernameContext'
 import MainFeed from './main-feed/MainFeed';
 import Header from './entry-login/Header';
+import ArticleInDetail from './main-feed/ArticleInDetail';
+import NavBar from './Navigation/NavBar';
 
 function App() {
     return <>
@@ -12,10 +14,12 @@ function App() {
                 <Routes>
                     <Route path="/" element={<EntryPage />} />
                     <Route path="/login" element={<><Header /><LogInPage /></>} />
-                    <Route path="/myfeed" element={<><Header /><MainFeed /></>} />
+                    <Route path="/myfeed" element={<><Header /><NavBar /><MainFeed /></>} />
+                    <Route path="/myfeed/:id" element={<><Header /><NavBar /><ArticleInDetail /></>} />
+                 
                 </Routes>
             </UsernameProvider>
-        </BrowserRouter>
+        </BrowserRouter >
     </>
 }
 

@@ -12,7 +12,13 @@ export const getUsernames = () => {
 
 export const getArticles = () => {
     return newsApi.get("/articles").then(({ data }) => {
-        console.log(data)
         return data.articles;
     });
 };
+
+export const getArticleById = (id) => {
+    const articleName = `article${id}`
+    return newsApi.get(`/articles/${id}`).then(({ data: { [articleName]: article } }) => {
+        return article
+    })
+}
