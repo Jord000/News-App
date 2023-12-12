@@ -27,7 +27,7 @@ export const getArticleById = (id) => {
 
 export const getCommentsById = (id) => {
   return newsApi
-    .get(`/articles/${id}/comments?sortby`)
+    .get(`/articles/${id}/comments`)
     .then(({ data: { comments } }) => {
       return comments
     })
