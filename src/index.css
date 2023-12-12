@@ -14,6 +14,7 @@ body {
 
 .title {
     font-size: 2.2em;
+    margin-bottom: 10px;
 }
 
 .logged-in-text {
@@ -54,6 +55,12 @@ h2 {
     padding-bottom: 10px;
 }
 
+.article-author {
+    margin-left: 5px;
+    font-weight: 500;
+    font-size: 11px;
+}
+
 .article-detail {
     font-weight: 500;
     padding: 3px
@@ -62,8 +69,8 @@ h2 {
 .article-image {
     margin-left: auto;
     margin-right: auto;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 10px;
+    margin-bottom: 20px;
     width: 90%;
     justify-content: center;
 }
