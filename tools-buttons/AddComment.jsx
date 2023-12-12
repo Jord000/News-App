@@ -7,11 +7,12 @@ import { postCommentToArticle } from '../api/api'
 
 const AddComment = ({ id, setCommentSeed }) => {
   const { username } = useContext(UsernameContext)
-  const [userComment, setUserComment] = useState()
+  const [userComment, setUserComment] = useState('')
 
   const submitCommentHandler = () => {
     setCommentSeed(true)
     postCommentToArticle(userComment, username, id)
+    setUserComment('')
   }
 
   const inputHandler = (event) => {
@@ -24,6 +25,7 @@ const AddComment = ({ id, setCommentSeed }) => {
         className="comment-input"
         variant="outlined"
         label="Comment"
+        value={userComment}
         onChange={inputHandler}
       ></TextField>
       <Box className='comment-button-container'>
