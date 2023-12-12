@@ -41,8 +41,13 @@ export const addVotesToArticleId = (votes, id) => {
 }
 
 export const postCommentToArticle = (userComment, username, id) => {
-  const postBody = { username, body:userComment }
+  const postBody = { username, body: userComment }
   return newsApi.post(`/articles/${id}/comments`, postBody).then((data) => {
     return data
   })
+}
+
+
+export const deleteCommentById = (id) => {
+  return newsApi.delete(`/comments/${id}`)
 }
