@@ -37,6 +37,8 @@ export const addVotesToArticleId = (votes, id) => {
   const patchBody = { inc_votes: votes }
   return newsApi.patch(`/articles/${id}`, patchBody).then((data) => {
     return data
+  }).catch((error) => {
+    return { error }
   })
 }
 
