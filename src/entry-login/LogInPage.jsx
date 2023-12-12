@@ -38,6 +38,7 @@ const LogInPage = () => {
             setButtonColor('error')
         } else {
             setUsername(userSelected)
+            sessionStorage.setItem("username",userSelected)
             navigate("/myfeed")
         }
     }

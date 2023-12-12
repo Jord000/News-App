@@ -6,14 +6,23 @@ import { useState } from 'react'
 
 const VotingButton = ({id, votes}) => {
 const [currVotes, setCurrVotes] = useState(votes)
+const [timesClicked, setTimesClicked] = useState(0)
+
 
 const upVote = ()=>{
+  if(timesClicked <=0){
+ 
+    setTimesClicked(timesClicked+1)
     setCurrVotes(currVotes+1)
-    addVotesToArticleId(1,id)
+    addVotesToArticleId(1,id)}
+  else{}
 }
 const downVote = ()=>{
+    if(timesClicked>=0){
+      setTimesClicked(timesClicked-1)
     setCurrVotes(currVotes-1)
-    addVotesToArticleId(-1,id)
+    addVotesToArticleId(-1,id)}
+
 }
 
 
