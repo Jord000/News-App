@@ -3,12 +3,12 @@ import { useSearchParams } from "react-router-dom";
 import { getArticleById } from "../../api/api";
 import { Box, CircularProgress } from "@mui/material";
 import CommentsById from "./CommentsById";
+import { useParams } from "react-router-dom";
 
 const ArticleInDetail = () => {
     const [foundArticle, setFoundArticle] = useState({})
     const [isLoading, setIsLoading] = useState(true)
-    const [searchParams] = useSearchParams();
-    const id = searchParams.get("id");
+    const {id} = useParams()
 
     useEffect(() => {
         getArticleById(id).then((article) => {
