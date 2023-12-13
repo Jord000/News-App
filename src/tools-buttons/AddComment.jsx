@@ -24,7 +24,7 @@ const AddComment = ({ id, comments, setComments }) => {
         created_at: 'right now',
         votes: 0,
       }
-      setComments([userComment])
+      setComments([tempComment,...comments])
       postCommentToArticle(userComment, username, id).then(() => {
         setCommentSeed(!commentSeed)
         setCommentColor('default')
