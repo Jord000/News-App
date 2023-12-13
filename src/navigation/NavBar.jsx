@@ -1,12 +1,14 @@
 import { Button, Menu, MenuItem } from '@mui/material'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
+import { UsernameContext } from '../../contexts/UsernameContext'
 import SortArticle from './SortArticle'
 
 const NavBar = () => {
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
   const navigate = useNavigate()
+  const { setUsername } = useContext(UsernameContext)
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget)
@@ -18,9 +20,11 @@ const NavBar = () => {
   const navigateToMyFeed = () => {
     navigate('/myfeed')
   }
-
-  const location = useLocation()
-
+  const logOut = () => {
+    sessionStorage.setItem('username', null)
+    setUsername(null)
+    navigate('/')
+  }
 
   return (
     <div style={{ display: 'flex', flexWrap:'wrap'}}>
@@ -34,6 +38,13 @@ const NavBar = () => {
           }}
         >
           My Feed
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            logOut(), handleClose()
+          }}
+        >
+          Log-Out
         </MenuItem>
       </Menu>
       {location.pathname==='/myfeed' && <SortArticle />}
