@@ -1,13 +1,12 @@
 import { Box, FormControl, InputLabel, MenuItem, Select } from '@mui/material'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { createSearchParams, useNavigate } from 'react-router-dom'
 
 const SortArticle = () => {
-  const [anchorEl, setAnchorEl] = useState(null)
-  const open = Boolean(anchorEl)
   const navigate = useNavigate()
-  const [allTopics, setAllTopics] = useState([])
   const [sort, setSort] = useState('')
+  const [order, setOrder] = useState('ASC')
+  const [isError,setIsError]=useState(false)
 
   const acceptedSorts = [
     'author',
@@ -20,46 +19,82 @@ const SortArticle = () => {
     'comment_count',
   ]
 
-  const sortSelect = (event) => {
+  useEffect(() => {
+    if (sort !== '') {
+      navigateToSortBy(sort, order)
+    }
+  }, [sort, order])
 
+  const sortSelect = (event) => {
     setSort(event.target.value)
-    console.log(sort)
+    setIsError(false)
+  }
+  const sortOrder = (event) => {
+    if(sort===''){
+        setIsError(true)
+    }else{
+
+        setOrder(event.target.value)
+    }
   }
 
-  const navigateToSortBy = (sort) => {
+  const navigateToSortBy = (sort, order) => {
     navigate({
       pathname: '/myfeed',
       search: createSearchParams({
         sort,
+        order,
       }).toString(),
     })
   }
 
   return (
-    <Box className="filter-article-box">
-      <FormControl variant="standard" sx={{ minWidth: '100px' }}>
-        <InputLabel>filter</InputLabel>
-        <Select
-          labelId="sort-by"
-          id="sort-by"
-          value={sort}
-          onChange={sortSelect}
-          label="sort"
-        >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          {acceptedSorts.map((sort) => {
-            return (
-              <MenuItem key={sort} value={sort}>
-                {sort.charAt(0).toUpperCase() +
-                  sort.slice(1).replace(/_/g, ' ')}
-              </MenuItem>
-            )
-          })}
-        </Select>
-      </FormControl>
-    </Box>
+    <>
+      <Box className="filter-article-box">
+        <FormControl variant="standard" sx={{ minWidth: '100px' }}>
+          <InputLabel>filter</InputLabel>
+          <Select
+            labelId="sort-by"
+            id="sort-by"
+            value={sort}
+            onChange={sortSelect}
+            label="sort"
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            {acceptedSorts.map((sort) => {
+              return (
+                <MenuItem key={sort} value={sort}>
+                  {sort.charAt(0).toUpperCase() +
+                    sort.slice(1).replace(/_/g, ' ')}
+                </MenuItem>
+              )
+            })}
+          </Select>
+        </FormControl>
+      </Box>
+      <Box className="order-article-box">
+        <FormControl variant="standard" sx={{ minWidth: '70px' }}>
+          <InputLabel >Order</InputLabel>
+          <Select
+            labelId="sort-by"
+            id="sort-by"
+            value={order}
+            onChange={sortOrder}
+            label="order"
+          >
+            <MenuItem key="ASC" value="ASC">
+              Ascending
+            </MenuItem>
+            <MenuItem key="DESC" value="DESC">
+              Descending
+            </MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
+        {isError && <p style={{color:'red',fontSize:'12px',marginLeft:'auto'}}>please select a filter to sort</p>}
+    </>
   )
 }
 

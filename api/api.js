@@ -10,9 +10,9 @@ export const getUsernames = () => {
   })
 }
 
-export const getArticles = (sort) => {
+export const getArticles = (topic,sort,order) => {
   if (sort) {
-    return newsApi.get(`/articles?sort_by=${sort}`).then(({ data }) => {
+    return newsApi.get(`/articles?sort_by=${sort}&order=${order}`).then(({ data }) => {
       return data.articles
     })
   } else {
