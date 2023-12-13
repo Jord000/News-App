@@ -1,12 +1,13 @@
 import { Button, Menu, MenuItem } from '@mui/material'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { UsernameContext } from '../../contexts/UsernameContext'
 import { getAllTopics } from '../../api/api'
 import TopicNav from './TopicNav'
 
-
 const NavBar = () => {
   const [anchorEl, setAnchorEl] = useState(null)
+  const { setUsername } = useContext(UsernameContext)
   const open = Boolean(anchorEl)
 
 
@@ -26,11 +27,13 @@ const NavBar = () => {
   const handleClose = () => {
     setAnchorEl(null)
 
-  }
-
-
   const navigateToMyFeed = () => {
     navigate('/myfeed')
+  }
+  const logOut = () => {
+    sessionStorage.setItem('username', null)
+    setUsername(null)
+    navigate('/')
   }
 
   return (
@@ -46,8 +49,14 @@ const NavBar = () => {
         >
           My Feed
         </MenuItem>
+        <MenuItem
+          onClick={() => {
+            logOut(), handleClose()
+          }}
+        >
+          Log-Out
+        </MenuItem>
       </Menu>
-
     </div>
   )
 }
