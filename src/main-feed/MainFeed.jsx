@@ -36,7 +36,9 @@ const MainFeed = () => {
         <CircularProgress />
       </Box>
     )
-  } else {
+  } else 
+  
+  {
     return (
       <Box id="main-feed-box" className="main-feed-box">
         {allArticles.map((article) => {
