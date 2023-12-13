@@ -11,9 +11,14 @@ export const getUsernames = () => {
 }
 
 export const getArticles = (topic) => {
-  return newsApi.get('/articles', { params: { topic } }).then(({ data }) => {
-    return data.articles
-  })
+  return newsApi
+    .get('/articles', { params: { topic } })
+    .then(({ data }) => {
+      return data.articles
+    })
+    .catch((error) => {
+      return { error }
+    })
 }
 
 export const getArticleById = (id) => {
@@ -22,6 +27,9 @@ export const getArticleById = (id) => {
     .get(`/articles/${id}`)
     .then(({ data: { [articleName]: article } }) => {
       return article
+    })
+    .catch((error) => {
+      return { error }
     })
 }
 
