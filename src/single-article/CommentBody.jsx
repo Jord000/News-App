@@ -12,8 +12,12 @@ const CommentBody = ({ comment }) => {
 
   const handleDelete = (id) => {
     setBinColor('secondary')
-    deleteCommentById(id).then(() => {
-      setCommentSeed(!commentSeed)
+    deleteCommentById(id).then((data) => {
+      if (data.error) {
+        setBinColor('error')
+      } else {
+        setCommentSeed(!commentSeed)
+      }
     })
   }
 
@@ -45,6 +49,7 @@ const CommentBody = ({ comment }) => {
           >
             {comment_id} - {created_at.substring(0, 10)} votes: {votes}
           </p>
+          {binColor==='error' && <p style={{color:'red'}}>Error deleting comment</p>}
         </div>
         {username === author && (
           <IconButton

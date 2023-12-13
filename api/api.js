@@ -57,6 +57,7 @@ export const getAllTopics = () => {
   })
 }
 
+
 export const postCommentToArticle = (userComment, username, id) => {
   const postBody = { username, body: userComment }
   return newsApi.post(`/articles/${id}/comments`, postBody).then((data) => {
@@ -65,5 +66,5 @@ export const postCommentToArticle = (userComment, username, id) => {
 }
 
 export const deleteCommentById = (id) => {
-  return newsApi.delete(`/comments/${id}`)
+  return newsApi.delete(`/comments/${id}`).catch((error) => {return {error}})
 }

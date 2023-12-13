@@ -6,6 +6,8 @@ import { Link, useParams } from "react-router-dom";
 const OneArticle = ({ article }) => {
     const { author, comment_count, created_at, title, votes, topic, body, article_id } = article
 
+
+
     return <>
         <Grid item xs={8}>
             <h2>{title}</h2>
@@ -15,7 +17,7 @@ const OneArticle = ({ article }) => {
             <p className="small-article-body">{truncateText(body)}</p>
             <b className="read-more">read more          </b>
             <Link to={`/myfeed/${article_id}`}>
-            <Fab sx={{ backgroundColor: '#6e94db' }} variant="extended" size="small" color="primary">
+            <Fab sx={{ backgroundColor: '#6e94db' }} variant="extended" size="small" color="primary" >
                 <MoreIcon className="more-icon" />
             </Fab>
             </Link>
