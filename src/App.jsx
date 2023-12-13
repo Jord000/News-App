@@ -17,7 +17,7 @@ function App() {
                     <Route path="/login" element={<><Header /><LogInPage /></>} />
                     <Route path="/myfeed" element={<><Header /><NavBar /><MainFeed /></>} />
                     <Route path="/myfeed/:id" element={<><Header /><NavBar /><ArticleInDetail /></>} />
-
+              
                     <Route path='*' element={<Navigate to='/' />} />
                  
                 </Routes>

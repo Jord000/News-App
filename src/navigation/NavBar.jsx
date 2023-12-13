@@ -8,6 +8,8 @@ import TopicNav from './TopicNav'
 const NavBar = () => {
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
+
+
   const navigate = useNavigate()
   const [allTopics, setAllTopics] = useState([])
 
@@ -20,9 +22,12 @@ const NavBar = () => {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget)
   }
+
   const handleClose = () => {
     setAnchorEl(null)
+
   }
+
 
   const navigateToMyFeed = () => {
     navigate('/myfeed')
@@ -42,19 +47,7 @@ const NavBar = () => {
           My Feed
         </MenuItem>
       </Menu>
-      <Button id="topics-button" onClick={handleClick}>
-        Topics
-      </Button>
-      <Menu
-        id="topic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-      >
-        {allTopics.map((topic) => {
-          return <TopicNav topic={topic} handleClose={handleClose} key={topic.slug}/>
-        })}
-      </Menu>
+
     </div>
   )
 }
