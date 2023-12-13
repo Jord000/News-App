@@ -10,7 +10,7 @@ import TopicNav from './TopicNav'
 const NavBar = () => {
 
   return (
-    <div>
+    <div className='navBar'>
       <MenuNav />
       <TopicNav/>
       {location.pathname==='/myfeed' && <SortArticle />}
