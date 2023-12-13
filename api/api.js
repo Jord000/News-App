@@ -53,5 +53,5 @@ export const postCommentToArticle = (userComment, username, id) => {
 }
 
 export const deleteCommentById = (id) => {
-  return newsApi.delete(`/comments/${id}`).catch((err) => err)
+  return newsApi.delete(`/comments/${id}`).catch((error) => {return {error}})
 }
