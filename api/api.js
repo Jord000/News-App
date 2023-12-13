@@ -10,10 +10,16 @@ export const getUsernames = () => {
   })
 }
 
-export const getArticles = () => {
-  return newsApi.get('/articles').then(({ data }) => {
-    return data.articles
-  })
+export const getArticles = (sort) => {
+  if (sort) {
+    return newsApi.get(`/articles?sort_by=${sort}`).then(({ data }) => {
+      return data.articles
+    })
+  } else {
+    return newsApi.get('/articles').then(({ data }) => {
+      return data.articles
+    })
+  }
 }
 
 export const getArticleById = (id) => {
@@ -35,9 +41,12 @@ export const getCommentsById = (id) => {
 
 export const addVotesToArticleId = (votes, id) => {
   const patchBody = { inc_votes: votes }
-  return newsApi.patch(`/articles/${id}`, patchBody).then((data) => {
-    return data
-  }).catch((error) => {
-    return { error }
-  })
+  return newsApi
+    .patch(`/articles/${id}`, patchBody)
+    .then((data) => {
+      return data
+    })
+    .catch((error) => {
+      return { error }
+    })
 }

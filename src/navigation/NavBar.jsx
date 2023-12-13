@@ -1,6 +1,7 @@
 import { Button, Menu, MenuItem } from "@mui/material"
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import SortArticle from "./SortArticle";
 
 const NavBar = () => {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -20,7 +21,7 @@ const NavBar = () => {
 
 
     return (
-        <div>
+        <div style={{display: "flex"}}>
             <Button
                 id="menu-button"
                 onClick={handleClick}
@@ -35,6 +36,7 @@ const NavBar = () => {
             >
                 <MenuItem onClick={() => { navigateToMyFeed(), handleClose() }}>My Feed</MenuItem>
             </Menu>
+            <SortArticle/>
         </div >
     );
 }
