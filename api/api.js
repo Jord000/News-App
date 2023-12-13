@@ -10,9 +10,9 @@ export const getUsernames = () => {
   })
 }
 
-export const getArticles = (topic) => {
+export const getArticles = (topic, sort, order) => {
   return newsApi
-    .get('/articles', { params: { topic } })
+    .get('/articles', { params: { topic, sort, order } })
     .then(({ data }) => {
       return data.articles
     })
@@ -39,11 +39,15 @@ export const getCommentsById = (id) => {
     .then(({ data: { comments } }) => {
       return comments
     })
+    .catch((error) => {
+      return { error }
+    })
 }
 
 export const addVotesToArticleId = (votes, id) => {
+  const patchBody = { inc_votes: votes }
   return newsApi
-    .patch(`/articles/${id}`, { params: { inc_votes: votes } })
+    .patch(`/articles/${id}`, patchBody)
     .then((data) => {
       return data
     })
@@ -53,19 +57,21 @@ export const addVotesToArticleId = (votes, id) => {
 }
 
 export const getAllTopics = () => {
-  return newsApi.get(`/topics/`).then(({ data: { topics } }) => {
-    return topics
-  })
+  return newsApi
+    .get(`/topics/`)
+    .then(({ data: { topics } }) => {
+      return topics
+    })
+    .catch((error) => {
+      return { error }
+    })
 }
 
 export const postCommentToArticle = (userComment, username, id) => {
-  return newsApi
-    .post(`/articles/${id}/comments`, {
-      params: { username, body: userComment },
-    })
-    .then((data) => {
-      return data
-    })
+  const postBody = { username, body: userComment }
+  return newsApi.post(`/articles/${id}/comments`, postBody).then((data) => {
+    return data
+  })
 }
 
 export const deleteCommentById = (id) => {

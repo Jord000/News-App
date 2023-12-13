@@ -31,7 +31,7 @@ const VotingButton = ({ id, votes }) => {
       setButtonColor2('secondary')
       setTimesClicked(timesClicked - 1)
       setCurrVotes(currVotes - 1)
-      addVotesToArticleId(-1, id).then(() => {
+      addVotesToArticleId(-1, id).then((data) => {
         if (data.error) {
           setButtonColor2('error')
         } else {

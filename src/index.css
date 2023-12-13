@@ -121,3 +121,13 @@ background-color:#fafaff;
     margin-left: 20px;
 display: inline;
 }
+.filter-article-box{
+  display: inline;
+  margin-left: auto;
+
+
+}
+.navBar{
+  display: flex;
+  flex-wrap: wrap;
+}
