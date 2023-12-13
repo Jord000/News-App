@@ -1,43 +1,62 @@
-import { Button, Menu, MenuItem } from "@mui/material"
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Button, Menu, MenuItem } from '@mui/material'
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { getAllTopics } from '../../api/api'
+import TopicNav from './TopicNav'
+
 
 const NavBar = () => {
-    const [anchorEl, setAnchorEl] = useState(null);
-    const open = Boolean(anchorEl);
-    const navigate = useNavigate()
+  const [anchorEl, setAnchorEl] = useState(null)
+  const open = Boolean(anchorEl)
+  const navigate = useNavigate()
+  const [allTopics, setAllTopics] = useState([])
 
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
+  useEffect(() => {
+    getAllTopics().then((topics) => {
+      setAllTopics(topics)
+    })
+  }, [])
 
-    const navigateToMyFeed = () => {
-        navigate('/myfeed');
-    }
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget)
+  }
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
 
+  const navigateToMyFeed = () => {
+    navigate('/myfeed')
+  }
 
-    return (
-        <div>
-            <Button
-                id="menu-button"
-                onClick={handleClick}
-            >
-                Menu
-            </Button>
-            <Menu
-                id="nav-menu"
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-            >
-                <MenuItem onClick={() => { navigateToMyFeed(), handleClose() }}>My Feed</MenuItem>
-            </Menu>
-        </div >
-    );
+  return (
+    <div>
+      <Button id="menu-button" onClick={handleClick}>
+        Menu
+      </Button>
+      <Menu id="nav-menu" anchorEl={anchorEl} open={open} onClose={handleClose}>
+        <MenuItem
+          onClick={() => {
+            navigateToMyFeed(), handleClose()
+          }}
+        >
+          My Feed
+        </MenuItem>
+      </Menu>
+      <Button id="topics-button" onClick={handleClick}>
+        Topics
+      </Button>
+      <Menu
+        id="topic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+      >
+        {allTopics.map((topic) => {
+          return <TopicNav topic={topic} handleClose={handleClose} key={topic.slug}/>
+        })}
+      </Menu>
+    </div>
+  )
 }
-
 
 export default NavBar

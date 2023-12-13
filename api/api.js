@@ -35,9 +35,18 @@ export const getCommentsById = (id) => {
 
 export const addVotesToArticleId = (votes, id) => {
   const patchBody = { inc_votes: votes }
-  return newsApi.patch(`/articles/${id}`, patchBody).then((data) => {
-    return data
-  }).catch((error) => {
-    return { error }
+  return newsApi
+    .patch(`/articles/${id}`, patchBody)
+    .then((data) => {
+      return data
+    })
+    .catch((error) => {
+      return { error }
+    })
+}
+
+export const getAllTopics = () => {
+  return newsApi.get(`/topics/`).then(({ data: { topics } }) => {
+    return topics
   })
 }
