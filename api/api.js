@@ -10,10 +10,16 @@ export const getUsernames = () => {
   })
 }
 
-export const getArticles = () => {
-  return newsApi.get('/articles').then(({ data }) => {
-    return data.articles
-  })
+export const getArticles = (topic) => {
+  if (topic) {
+    return newsApi.get(`/articles?topic=${topic}`).then(({ data }) => {
+      return data.articles
+    })
+  } else {
+    return newsApi.get('/articles').then(({ data }) => {
+      return data.articles
+    })
+  }
 }
 
 export const getArticleById = (id) => {
@@ -57,7 +63,6 @@ export const postCommentToArticle = (userComment, username, id) => {
     return data
   })
 }
-
 
 export const deleteCommentById = (id) => {
   return newsApi.delete(`/comments/${id}`)

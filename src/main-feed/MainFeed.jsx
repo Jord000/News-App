@@ -5,30 +5,32 @@ import ArticleComments from './ArticleComments.jsx'
 import { Box, Grid, CircularProgress } from '@mui/material'
 import { useContext } from 'react'
 import { UsernameContext } from '../../contexts/UsernameContext.jsx'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 
 const MainFeed = () => {
   const [allArticles, setAllArticles] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const { username } = useContext(UsernameContext)
   const navigate = useNavigate()
-
+  let [searchParams, setSearchParams] = useSearchParams()
+  
+  const topic = searchParams.get('topic')
 
   useEffect(() => {
     if (!username) {
-      navigate("/");
-    } 
-  }, []);
+      navigate('/')
+    }
+  }, [])
 
   useEffect(() => {
-    getArticles()
+    getArticles(topic)
       .then((articles) => {
         setAllArticles(articles)
       })
       .then(() => {
         setIsLoading(false)
       })
-  }, [])
+  }, [topic])
 
   if (isLoading) {
     return (
@@ -36,9 +38,7 @@ const MainFeed = () => {
         <CircularProgress />
       </Box>
     )
-  } else 
-  
-  {
+  } else {
     return (
       <Box id="main-feed-box" className="main-feed-box">
         {allArticles.map((article) => {
