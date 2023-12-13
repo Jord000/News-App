@@ -25,7 +25,10 @@ const MainFeed = () => {
   useEffect(() => {
     getArticles(topic)
       .then((articles) => {
-        setAllArticles(articles)
+        if(articles.error){
+          navigate('/errorpage')
+        }else{
+        setAllArticles(articles)}
       })
       .then(() => {
         setIsLoading(false)
