@@ -14,10 +14,12 @@ body {
 .title {
   font-size: 2.2em;
   margin-bottom: 10px;
+  
 }
 
 .logged-in-text {
   margin-left: auto;
+  font-size: 0.8em;
 }
 
 .main-feed-box {

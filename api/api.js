@@ -12,7 +12,7 @@ export const getUsernames = () => {
 
 export const getArticles = (topic, sort, order) => {
   return newsApi
-    .get('/articles', { params: { topic, sort, order } })
+    .get('/articles', { params: { topic, sort_by: sort, order } })
     .then(({ data }) => {
       return data.articles
     })
