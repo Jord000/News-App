@@ -45,6 +45,7 @@ export const addVotesToArticleId = (votes, id) => {
     })
 }
 
+
 export const postCommentToArticle = (userComment, username, id) => {
   const postBody = { username, body: userComment }
   return newsApi.post(`/articles/${id}/comments`, postBody).then((data) => {
