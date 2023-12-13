@@ -1,11 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getCommentsById } from "../../api/api";
 import { Box, CircularProgress } from "@mui/material";
 import CommentBody from "./CommentBody";
+import { CommentSeedContext } from "../../contexts/CommentSeedContext";
+
 
 const CommentsById = ({ id }) => {
+    const { commentSeed, setCommentSeed } = useContext(CommentSeedContext)
     const [comments, setComments] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+
 
     useEffect(() => {
         getCommentsById(id).then((comments) => {
@@ -13,7 +17,7 @@ const CommentsById = ({ id }) => {
         }).then(() => {
             setIsLoading(false)
         });
-    }, []);
+    }, [commentSeed]);
 
 
     if (isLoading) {

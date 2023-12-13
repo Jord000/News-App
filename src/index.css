@@ -54,9 +54,10 @@ h2 {
 }
 
 .article-author {
-  margin-left: 5px;
+  margin-left: auto;
   font-weight: 500;
   font-size: 11px;
+ 
 }
 
 .article-detail {
@@ -100,11 +101,23 @@ h2 {
 
 .thumbs-up {
 display: inline;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left: 8px;
+  margin-right: 8px;
 }
 .thumbs-down {
     display: inline;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.comment-input-container{
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+.comment-input{
+background-color:#fafaff;
+}
+.comment-button-container{
+    margin-left: 20px;
+display: inline;
 }
