@@ -17,9 +17,10 @@ const AddComment = ({ id }) => {
       setCommentColor('error')
     }
     else {
-      setCommentSeed(!commentSeed)
+      
       setCommentColor('secondary')
       postCommentToArticle(userComment, username, id).then(() => {
+        setCommentSeed(!commentSeed)
         setCommentColor('default')
       })
       setUserComment('')

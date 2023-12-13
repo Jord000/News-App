@@ -15,7 +15,6 @@ const CommentsById = ({ id }) => {
         getCommentsById(id).then((comments) => {
             setComments(comments)
         }).then(() => {
-            setCommentSeed(!commentSeed)
             setIsLoading(false)
         });
     }, [commentSeed]);
