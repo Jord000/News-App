@@ -15,12 +15,16 @@ const VotingButton = ({ id, votes }) => {
       setButtonColor1('secondary')
       setTimesClicked(timesClicked + 1)
       setCurrVotes(currVotes + 1)
-      addVotesToArticleId(1, id).then(() => {
-        setTimeout(() => { setButtonColor1('default') }, 100)
-
+      addVotesToArticleId(1, id).then((data) => {
+        if (data.error) {
+          setButtonColor1('error')
+        } else {
+          setTimeout(() => {
+            setButtonColor1('default')
+          }, 100)
+        }
       })
     }
-    else { }
   }
   const downVote = () => {
     if (timesClicked >= 0) {
@@ -28,22 +32,28 @@ const VotingButton = ({ id, votes }) => {
       setTimesClicked(timesClicked - 1)
       setCurrVotes(currVotes - 1)
       addVotesToArticleId(-1, id).then(() => {
-        setTimeout(() => { setButtonColor2('default') }, 100)
+        if (data.error) {
+          setButtonColor2('error')
+        } else {
+          setTimeout(() => {
+            setButtonColor2('default')
+          }, 100)
+        }
       })
     }
-
   }
-
 
   return (
     <>
-      <Box className="thumbs-up" >
-        <p style={{ display: 'inline', marginRight: '20px' }}>Votes: {currVotes}</p>
+      <Box className="thumbs-up">
+        <p style={{ display: 'inline', marginRight: '20px' }}>
+          Votes: {currVotes}
+        </p>
         <Fab size="small" onClick={upVote} color={buttonColor1}>
           <ThumbUpIcon />
         </Fab>
       </Box>
-      <Box className="thumbs-down" >
+      <Box className="thumbs-down">
         <Fab size="small" color={buttonColor2} onClick={downVote}>
           <ThumbDownIcon />
         </Fab>

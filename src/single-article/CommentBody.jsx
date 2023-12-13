@@ -12,8 +12,12 @@ const CommentBody = ({ comment }) => {
 
   const handleDelete = (id) => {
     setBinColor('secondary')
-    deleteCommentById(id).then(() => {
-      setCommentSeed(!commentSeed)
+    deleteCommentById(id).then((data) => {
+      if (data.error) {
+        setBinColor('error')
+      } else {
+        setCommentSeed(!commentSeed)
+      }
     })
   }
 
