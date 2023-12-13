@@ -26,17 +26,18 @@ const MainFeed = () => {
 
   useEffect(() => {
     setIsLoading(true)
-    getArticles(topic,sort,order)
+    getArticles(topic, sort, order)
       .then((articles) => {
-        if(articles.error){
+        if (articles.error) {
           navigate('/errorpage')
-        }else{
-        setAllArticles(articles)}
+        } else {
+          setAllArticles(articles)
+        }
       })
       .then(() => {
         setIsLoading(false)
       })
-  }, [topic,sort,order])
+  }, [topic, sort, order])
 
   if (isLoading) {
     return (
