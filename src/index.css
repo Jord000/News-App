@@ -14,7 +14,7 @@ body {
 .title {
   font-size: 2.2em;
   margin-bottom: 10px;
-  
+
 }
 
 .logged-in-text {
@@ -59,7 +59,7 @@ h2 {
   margin-left: auto;
   font-weight: 500;
   font-size: 11px;
- 
+
 }
 
 .article-detail {
@@ -102,34 +102,45 @@ h2 {
 }
 
 .thumbs-up {
-display: inline;
-  margin-left: 8px;
-  margin-right: 8px;
-}
-.thumbs-down {
-    display: inline;
+  display: inline;
   margin-left: 8px;
   margin-right: 8px;
 }
 
-.comment-input-container{
-    margin-top: 15px;
-    margin-bottom: 10px;
+.thumbs-down {
+  display: inline;
+  margin-left: 8px;
+  margin-right: 8px;
 }
-.comment-input{
-background-color:#fafaff;
+
+.comment-input-container {
+  margin-top: 15px;
+  margin-bottom: 10px;
 }
-.comment-button-container{
-    margin-left: 20px;
-display: inline;
+
+.comment-input {
+  background-color: #fafaff;
 }
-.filter-article-box{
+
+.comment-button-container {
+  margin-left: 20px;
+  display: inline;
+}
+
+.filter-article-box {
   display: inline;
   margin-left: auto;
 
 
 }
-.navBar{
+
+.navBar {
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.menu-button {
+  display: flex;
+  align-items: end;
 }

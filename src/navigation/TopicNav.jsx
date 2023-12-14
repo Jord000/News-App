@@ -36,7 +36,7 @@ const TopicNav = ({ setOrder, setSort }) => {
 
   return (
     <>
-      <Button id="menu-button" onClick={handleClick}>
+      <Button id="menu-button" onClick={handleClick} style={{ display: 'flex', alignItems: 'end' }}>
         Topics
       </Button>
       <Menu
