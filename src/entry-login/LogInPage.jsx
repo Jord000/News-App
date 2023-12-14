@@ -38,7 +38,7 @@ const LogInPage = () => {
             setButtonColor('error')
         } else {
             setUsername(userSelected)
-            sessionStorage.setItem("username",userSelected)
+            sessionStorage.setItem("username", userSelected)
             navigate("/myfeed")
         }
     }
@@ -51,9 +51,9 @@ const LogInPage = () => {
     }
     else return <>
 
-        <h2 className="welcome-login">Login to see your feed...</h2>
+        <h2 className="welcome-login-text">Login to see your feed...</h2>
 
-        <Box sx={{ minWidth: 120 }}>
+        <Box className='login-menu' sx={{ minWidth: 120 }}>
             <FormControl style={{ minWidth: 300 }}>
                 <InputLabel id="select-label">Username</InputLabel>
                 <Select
