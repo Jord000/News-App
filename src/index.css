@@ -126,6 +126,24 @@ h2 {
   padding-bottom: 10px;
 }
 
+@media (min-width: 400px) {
+  .small-article-body {
+    font-size: 3vw;
+
+  }
+}
+
+.main-feed-article-title {
+  font-size: 20px;
+}
+
+@media (min-width: 400px) {
+  .main-feed-article-title {
+    font-size: 5vw;
+
+  }
+}
+
 .article-author {
   margin-left: auto;
   font-weight: 500;
@@ -136,6 +154,7 @@ h2 {
 .article-detail {
   font-weight: 500;
   padding: 3px;
+  font-size: 3vw;
 }
 
 .article-image {
@@ -145,6 +164,12 @@ h2 {
   margin-bottom: 20px;
   width: 90%;
   justify-content: center;
+}
+
+@media (min-width: 500px) {
+  .article-image {
+    width: 430px
+  }
 }
 
 .found-article-by-id {
@@ -162,7 +187,23 @@ h2 {
   margin-left: 10px;
 }
 
+.article-in-detail-title {
+  font-size: 20px;
+}
 
+@media (min-width: 400px) {
+  .article-in-detail-title {
+    font-size: 6vw;
+
+  }
+}
+
+@media (min-width: 700px) {
+  .article-in-detail-title {
+    font-size: 4vw;
+
+  }
+}
 
 .read-more-container {
   display: flex;

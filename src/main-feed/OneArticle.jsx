@@ -18,7 +18,7 @@ const OneArticle = ({ article }) => {
                 transition: 'background-color .3s'
             }}
         >
-            <h2>{title}</h2>
+            <h2 className="main-feed-article-title">{title}</h2>
             <p className="article-detail">Topic - {topic}</p>
             <p className="article-detail">Posted by author - {author}</p>
             <p className="article-detail">Date Posted- {created_at.substring(0, 10)}</p>
