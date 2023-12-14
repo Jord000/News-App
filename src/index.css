@@ -58,6 +58,7 @@ body {
 .logged-in-text {
   margin-left: auto;
   font-size: 0.8em;
+  text-wrap: wrap;
 }
 
 .login-wrapper {
@@ -90,7 +91,8 @@ body {
 .main-feed-box {
   margin: 10px;
   border: rgb(169, 168, 179) solid 1px;
-  padding: 10;
+  padding: 5px;
+  padding-top: 0px;
   border-radius: 5px;
 }
 

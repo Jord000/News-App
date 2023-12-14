@@ -51,7 +51,7 @@ const MainFeed = () => {
       <Box id="main-feed-box" className="main-feed-box">
         {allArticles.map((article) => {
           return (
-            <Grid container spacing={2} key={article.article_id}>
+            <Grid container direction="row" spacing={2} key={article.article_id}>
               <OneArticle article={article} key={article.id} />
               <ArticleComments article={article} key={article} />
             </Grid>
