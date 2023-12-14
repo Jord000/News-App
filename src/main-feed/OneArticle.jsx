@@ -15,7 +15,8 @@ const OneArticle = ({ article }) => {
                 padding: '10px',
                 borderRadius: '8px',
                 filter: 'drop-shadow(2px 2px 4px grey)',
-                transition: 'background-color .3s'
+                transition: 'background-color .3s',
+                marginBottom: '30px'
             }}
         >
             <h2 className="main-feed-article-title">{title}</h2>

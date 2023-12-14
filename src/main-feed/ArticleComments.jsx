@@ -14,7 +14,7 @@ const ArticleComments = ({ article }) => {
         padding: '8px',
         marginLeft: 'auto',
         marginTop: '8px',
-        marginBottom: '5px',
+        marginBottom: '20px',
         backgroundColor: '#fdfaff',
         borderRadius: '8px',
 
