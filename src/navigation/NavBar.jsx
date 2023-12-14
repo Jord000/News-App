@@ -1,14 +1,14 @@
-import { useContext, useEffect, useState } from 'react'
-import { getAllTopics } from '../../api/api'
-import TopicNav from './TopicNav'
+import SortArticle from './SortArticle'
 import MenuNav from './MenuNav'
+import TopicNav from './TopicNav'
 
 const NavBar = () => {
 
   return (
-    <div>
+    <div className='navBar'>
       <MenuNav />
       <TopicNav/>
+      {location.pathname==='/myfeed' && <SortArticle />}
     </div>
   )
 }

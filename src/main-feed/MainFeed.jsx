@@ -13,8 +13,10 @@ const MainFeed = () => {
   const { username } = useContext(UsernameContext)
   const navigate = useNavigate()
   let [searchParams, setSearchParams] = useSearchParams()
-  
+
   const topic = searchParams.get('topic')
+  const sort = searchParams.get('sort')
+  const order = searchParams.get('order')
 
   useEffect(() => {
     if (!username) {
@@ -23,14 +25,19 @@ const MainFeed = () => {
   }, [])
 
   useEffect(() => {
-    getArticles(topic)
+    setIsLoading(true)
+    getArticles(topic, sort, order)
       .then((articles) => {
-        setAllArticles(articles)
+        if (articles.error) {
+          navigate('/errorpage')
+        } else {
+          setAllArticles(articles)
+        }
       })
       .then(() => {
         setIsLoading(false)
       })
-  }, [topic])
+  }, [topic, sort, order])
 
   if (isLoading) {
     return (
@@ -38,7 +45,8 @@ const MainFeed = () => {
         <CircularProgress />
       </Box>
     )
-  } else {
+  }
+  {
     return (
       <Box id="main-feed-box" className="main-feed-box">
         {allArticles.map((article) => {

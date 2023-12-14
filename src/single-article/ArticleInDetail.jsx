@@ -7,6 +7,7 @@ import VotingButton from '../tools-buttons/VotingButton'
 import { useContext } from 'react'
 import { UsernameContext } from '../../contexts/UsernameContext'
 import AddComment from '../tools-buttons/AddComment'
+import ErrorPage from '../tools-buttons/ErrorPage'
 
 const ArticleInDetail = () => {
   const [foundArticle, setFoundArticle] = useState({})
@@ -26,6 +27,9 @@ const ArticleInDetail = () => {
   useEffect(() => {
     getArticleById(id)
       .then((article) => {
+        if(article.error){
+          navigate('/errorpage')
+        }
         setFoundArticle(article)
       })
       .then(() => {
