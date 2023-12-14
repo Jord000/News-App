@@ -7,7 +7,19 @@ const ArticleComments = ({ article }) => {
   const [comments, setComments] = useState([])
   return (
     <>
-      <Grid item xs={4} style={{overflowY:'scroll',height:'300px',width:'100%'}}>
+      <Grid item xs={4} style={{
+        overflowY: 'scroll',
+        msOverflowStyle: 'none',
+        scrollbarWidth: 'none',
+        height: '40vh',
+        padding: '8px',
+        marginLeft: 'auto',
+        marginTop: '8px',
+        marginBottom: '5px',
+        backgroundColor: '#fdfaff',
+        borderRadius: '5px'
+
+      }}>
         <CommentsById
           comments={comments}
           setComments={setComments}
