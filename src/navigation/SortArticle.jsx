@@ -3,10 +3,9 @@ import { useEffect, useState } from 'react'
 import { createSearchParams, useNavigate, useSearchParams } from 'react-router-dom'
 
 
-const SortArticle = () => {
+const SortArticle = ({ sort, order, setOrder, setSort }) => {
   const navigate = useNavigate()
-  const [sort, setSort] = useState('')
-  const [order, setOrder] = useState('ASC')
+
   const [isError, setIsError] = useState(false)
   let [searchParams, setSearchParams] = useSearchParams()
   let topic = searchParams.get('topic')

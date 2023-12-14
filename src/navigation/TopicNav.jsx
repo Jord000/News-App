@@ -4,12 +4,12 @@ import { createSearchParams, useNavigate, useSearchParams } from 'react-router-d
 import { getAllTopics } from '../../api/api'
 
 
-const TopicNav = () => {
+const TopicNav = ({ setOrder, setSort }) => {
   const [anchorEl, setAnchorEl] = useState(null)
   const open = Boolean(anchorEl)
   const navigate = useNavigate()
   const [allTopics, setAllTopics] = useState([])
- 
+
   useEffect(() => {
     getAllTopics().then((topics) => {
       setAllTopics(topics)
@@ -24,6 +24,8 @@ const TopicNav = () => {
   }
 
   const navigateToTopics = (topic) => {
+    setOrder('ASC')
+    setSort('')
     navigate({
       pathname: '/myfeed',
       search: createSearchParams({
