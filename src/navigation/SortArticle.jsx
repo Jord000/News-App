@@ -9,7 +9,11 @@ const SortArticle = () => {
   const [order, setOrder] = useState('ASC')
   const [isError, setIsError] = useState(false)
   let [searchParams, setSearchParams] = useSearchParams()
-  const topic = searchParams.get('topic')
+  let topic = searchParams.get('topic')
+  if (topic === null) {
+    topic = ''
+  }
+
 
   const acceptedSorts = [
     'author',
