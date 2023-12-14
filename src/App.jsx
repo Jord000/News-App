@@ -18,12 +18,12 @@ function App() {
                 <CommentSeedProvider>
                     <Routes>
                         <Route path="/" element={<EntryPage />} />
-                        <Route path="/login" element={<><Header /><LogInPage /></>} />
+                        <Route path="/login" element={<><div className='login-wrapper'><Header /><LogInPage /></div></>} />
                         <Route path="/myfeed" element={<><Header /><NavBar /><MainFeed /></>} />
                         <Route path="/myfeed/:id" element={<><Header /><NavBar /><ArticleInDetail /></>} />
 
 
-                        <Route path='*' element={<><Header /><NavBar /><ErrorPage/></>} />
+                        <Route path='*' element={<><Header /><NavBar /><ErrorPage /></>} />
 
                     </Routes>
                 </CommentSeedProvider>

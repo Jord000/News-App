@@ -27,7 +27,7 @@ const ArticleInDetail = () => {
   useEffect(() => {
     getArticleById(id)
       .then((article) => {
-        if(article.error){
+        if (article.error) {
           navigate('/errorpage')
         }
         setFoundArticle(article)
@@ -48,7 +48,7 @@ const ArticleInDetail = () => {
       <>
         {' '}
         <div className="found-article-by-id">
-          <h2>{foundArticle.title}</h2>
+          <h2 className='article-in-detail-title'>{foundArticle.title}</h2>
           <p className="article-author"> By {foundArticle.author}</p>
           <img
             className="article-image"

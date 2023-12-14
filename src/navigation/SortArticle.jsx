@@ -57,18 +57,17 @@ const SortArticle = ({ sort, order, setOrder, setSort }) => {
   return (
     <>
       <Box className="filter-article-box">
-        <FormControl variant="standard" sx={{ minWidth: '100px' }}>
-          <InputLabel>filter</InputLabel>
+        <FormControl variant="standard" sx={{ minWidth: '70px' }}>
+          <InputLabel >filter</InputLabel>
           <Select
+            sx={{ minHeight: '40px', fontSize: '12px' }}
             labelId="sort-by"
             id="sort-by"
             value={sort}
             onChange={sortSelect}
             label="sort"
+            MenuProps={{ PaperProps: { sx: { minHeight: 50 } } }}
           >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
             {acceptedSorts.map((sort) => {
               return (
                 <MenuItem key={sort} value={sort}>
@@ -84,8 +83,9 @@ const SortArticle = ({ sort, order, setOrder, setSort }) => {
         <FormControl variant="standard" sx={{ minWidth: '70px' }}>
           <InputLabel>Order</InputLabel>
           <Select
-            labelId="sort-by"
-            id="sort-by"
+            sx={{ minHeight: '40px', fontSize: '12px' }}
+            labelId="order-by"
+            id="order-by"
             value={order}
             onChange={sortOrder}
             label="order"
