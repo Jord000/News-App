@@ -7,6 +7,7 @@ import Header from './entry-login/Header';
 import ArticleInDetail from './single-article/ArticleInDetail';
 import NavBar from './navigation/NavBar';
 import { CommentSeedProvider } from '../contexts/CommentSeedContext';
+import ErrorPage from './tools-buttons/ErrorPage';
 
 
 
@@ -22,7 +23,7 @@ function App() {
                         <Route path="/myfeed/:id" element={<><Header /><NavBar /><ArticleInDetail /></>} />
 
 
-                        <Route path='*' element={<Navigate to='/' />} />
+                        <Route path='*' element={<><Header /><NavBar /><ErrorPage/></>} />
 
                     </Routes>
                 </CommentSeedProvider>
