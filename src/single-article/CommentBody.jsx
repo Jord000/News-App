@@ -4,11 +4,23 @@ import { useContext, useState } from 'react'
 import { UsernameContext } from '../../contexts/UsernameContext'
 import { deleteCommentById } from '../../api/api'
 import { CommentSeedContext } from '../../contexts/CommentSeedContext'
+import { useLocation } from 'react-router-dom'
 
 const CommentBody = ({ comment }) => {
   const { username } = useContext(UsernameContext)
   const { commentSeed, setCommentSeed } = useContext(CommentSeedContext)
   const [binColor, setBinColor] = useState('default')
+  let commentAuthor = 'comment-author'
+  let commentContainer = 'comment-container'
+  let commentBody = 'comment-body'
+  let commentIdVotesDate = 'comment-id-votes-date'
+  const path = useLocation().pathname
+  if (path === '/myfeed') {
+    commentAuthor = 'comment-author-sidebar'
+    commentContainer = 'comment-container-sidebar'
+    commentBody = 'comment-body-sidebar'
+    commentIdVotesDate = 'comment-id-votes-date-sidebar'
+  }
 
   const handleDelete = (id) => {
     setBinColor('secondary')
@@ -21,37 +33,28 @@ const CommentBody = ({ comment }) => {
     })
   }
 
+
   const { article_id, author, body, comment_id, created_at, votes } = comment
   return (
     <>
-      <div style={{ display: 'flex' }}>
+      <div id={commentContainer}>
         <div>
-          <b
-            style={{
-              fontSize: '14px',
-              marginTop: '20px',
-              paddingBottom: '12px',
-            }}
-          >
+          <b id={commentAuthor}>
             {author} says...
           </b>
           <p
-            style={{
-              fontSize: '16px',
-              marginTop: '10px',
-              paddingBottom: '10px',
-            }}
+            id={commentBody}
           >
             {body}
           </p>
           <p
-            style={{ fontSize: '12px', marginTop: '5px', marginBottom: '15px' }}
+            id={commentIdVotesDate}
           >
             {comment_id} - {created_at.substring(0, 10)} votes: {votes}
           </p>
-          {binColor==='error' && <p style={{color:'red'}}>Error deleting comment</p>}
+          {binColor === 'error' && <p style={{ color: 'red' }}>Error deleting comment</p>}
         </div>
-        {username === author && (
+        {username === author && path !== '/myfeed' && (
           <IconButton
             aria-label="delete"
             onClick={() => {

@@ -59,6 +59,8 @@ body {
   margin-left: auto;
   font-size: 0.8em;
   text-wrap: wrap;
+  width: 100%;
+  text-align: right;
 }
 
 .login-wrapper {
@@ -94,10 +96,71 @@ body {
   padding: 5px;
   padding-top: 0px;
   border-radius: 5px;
+
 }
 
 p {
   margin: 0;
+}
+
+#comment-container {
+  display: flex;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 1px 1px 10px #666;
+  margin-bottom: 10px;
+}
+
+#comment-container-sidebar {
+  display: flex;
+}
+
+#comment-header {
+  margin-top: 18px;
+  margin-bottom: 10px;
+}
+
+#comment-header-sidebar {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+#comment-author-body {
+  font-size: 20px;
+  margin-top: 20px;
+  padding-bottom: 12px;
+}
+
+#comment-author-sidebar {
+  font-size: 11px;
+  margin-top: 10px;
+  padding-bottom: 12px;
+}
+
+#comment-body {
+  font-size: 16px;
+  margin-top: 10px;
+  padding-bottom: 10px;
+}
+
+#comment-body-sidebar {
+  font-size: 13px;
+  margin-top: 5px;
+  padding-bottom: 5px;
+}
+
+#comment-id-votes-date {
+  font-size: 12px;
+  margin-top: 5px;
+  margin-bottom: 15px
+}
+
+#comment-id-votes-date-sidebar {
+  font-size: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px
 }
 
 h2 {

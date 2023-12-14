@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material'
+import { Box, Grid } from '@mui/material'
 import CommentsById from '../single-article/CommentsById'
 import { useState } from 'react'
 
@@ -11,20 +11,22 @@ const ArticleComments = ({ article }) => {
         overflowY: 'scroll',
         msOverflowStyle: 'none',
         scrollbarWidth: 'none',
-        height: '40vh',
         padding: '8px',
         marginLeft: 'auto',
         marginTop: '8px',
         marginBottom: '5px',
         backgroundColor: '#fdfaff',
-        borderRadius: '5px'
+        borderRadius: '8px',
+
 
       }}>
-        <CommentsById
-          comments={comments}
-          setComments={setComments}
-          id={article.article_id}
-        />
+        <Box style={{ height: '30vh' }}>
+          <CommentsById
+            comments={comments}
+            setComments={setComments}
+            id={article.article_id}
+          />
+        </Box>
       </Grid>
     </>
   )

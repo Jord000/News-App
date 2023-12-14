@@ -14,8 +14,8 @@ const Header = () => {
 
     } else {
         return <div className="header-container">
-            <h1 className="title-feed">THE NEWS...</h1>
             <p className="logged-in-text">{username} is logged in</p >
+            <h1 className="title-feed">THE NEWS...</h1>
         </div>
     }
 
