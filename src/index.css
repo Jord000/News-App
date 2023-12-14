@@ -23,23 +23,11 @@ body {
   font-size: 8vw;
 }
 
-@media (min-width: 450px) {
-  .title {
-    font-size: 12vw;
-
-  }
-}
 
 .title-feed {
   font-size: 2.2em;
   margin-bottom: 10px;
 
-}
-
-
-.header-container {
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .title {
@@ -50,10 +38,34 @@ body {
 
 @media (min-width: 450px) {
   .title {
+    font-size: 12vw;
+
+  }
+
+  .title-feed {
+    font-size: 6vw
+  }
+}
+
+@media (min-width: 750px) {
+  .title {
     font-size: 10vw;
 
   }
+
+  .title-feed {
+    font-size: 4vw
+  }
 }
+
+
+.header-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+
 
 .logged-in-text {
   margin-left: auto;
@@ -163,6 +175,50 @@ p {
   margin-bottom: 15px
 }
 
+@media (min-width: 550px) {
+  #comment-header {
+    font-size: 4vw;
+  }
+
+  #comment-header-sidebar {
+    font-size: 2vw;
+  }
+
+  #comment-author-sidebar {
+    font-size: 1.8vw;
+  }
+
+  #comment-body-sidebar {
+    font-size: 2vw;
+  }
+
+  #comment-id-votes-date-sidebar {
+    font-size: 1.6vw;
+  }
+}
+
+@media (min-width: 800px) {
+  #comment-header {
+    font-size: 3vw
+  }
+
+  #comment-header-sidebar {
+    font-size: 1.8vw;
+  }
+
+  #comment-author-sidebar {
+    font-size: 1.6vw;
+  }
+
+  #comment-body-sidebar {
+    font-size: 1.8vw;
+  }
+
+  #comment-id-votes-date-sidebar {
+    font-size: 1.4vw;
+  }
+}
+
 h2 {
   margin: 5px;
   font-size: 20px;
@@ -186,27 +242,9 @@ h2 {
   transform: translateY(2px);
 }
 
-.small-article-body {
-  font-size: 14px;
-  padding-bottom: 10px;
-}
-
-@media (min-width: 400px) {
-  .small-article-body {
-    font-size: 3vw;
-
-  }
-}
 
 .main-feed-article-title {
   font-size: 20px;
-}
-
-@media (min-width: 400px) {
-  .main-feed-article-title {
-    font-size: 5vw;
-
-  }
 }
 
 .article-author {
@@ -221,6 +259,46 @@ h2 {
   padding: 3px;
   font-size: 3vw;
 }
+
+.small-article-body {
+  font-size: 14px;
+  padding-bottom: 10px;
+}
+
+@media (min-width: 400px) {
+  .main-feed-article-title {
+    font-size: 5vw;
+
+  }
+
+  .small-article-body {
+    font-size: 3vw;
+
+  }
+
+  .article-detail {
+    font-size: 2.5vw;
+    margin-bottom: 8px;
+  }
+}
+
+@media (min-width: 650px) {
+  .main-feed-article-title {
+    font-size: 3vw;
+
+  }
+
+  .small-article-body {
+    font-size: 1.8vw;
+
+  }
+
+  .article-detail {
+    font-size: 1.8vw;
+    margin-bottom: 8px;
+  }
+}
+
 
 .article-image {
   margin-left: auto;
@@ -246,6 +324,9 @@ h2 {
 .found-article-body {
   font-size: 16px;
   margin: 10px;
+  background-color: #ffffff;
+  padding: 8px;
+  margin-bottom: 10px;
 }
 
 .found-article-votes {
