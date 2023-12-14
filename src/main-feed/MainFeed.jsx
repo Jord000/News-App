@@ -14,9 +14,9 @@ const MainFeed = () => {
   const navigate = useNavigate()
   let [searchParams, setSearchParams] = useSearchParams()
 
+  const topic = searchParams.get('topic')
   const sort = searchParams.get('sort')
   const order = searchParams.get('order')
-  const topic = searchParams.get('topic')
 
   useEffect(() => {
     if (!username) {
@@ -26,14 +26,18 @@ const MainFeed = () => {
 
   useEffect(() => {
     setIsLoading(true)
-    getArticles(topic,sort,order)
+    getArticles(topic, sort, order)
       .then((articles) => {
-        setAllArticles(articles)
+        if (articles.error) {
+          navigate('/errorpage')
+        } else {
+          setAllArticles(articles)
+        }
       })
       .then(() => {
         setIsLoading(false)
       })
-  }, [topic,sort,order])
+  }, [topic, sort, order])
 
   if (isLoading) {
     return (

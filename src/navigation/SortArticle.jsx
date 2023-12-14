@@ -1,12 +1,15 @@
 import { Box, FormControl, InputLabel, MenuItem, Select } from '@mui/material'
 import { useEffect, useState } from 'react'
-import { createSearchParams, useNavigate } from 'react-router-dom'
+import { createSearchParams, useNavigate, useSearchParams } from 'react-router-dom'
+
 
 const SortArticle = () => {
   const navigate = useNavigate()
   const [sort, setSort] = useState('')
   const [order, setOrder] = useState('ASC')
-  const [isError,setIsError]=useState(false)
+  const [isError, setIsError] = useState(false)
+  let [searchParams, setSearchParams] = useSearchParams()
+  const topic = searchParams.get('topic')
 
   const acceptedSorts = [
     'author',
@@ -30,11 +33,10 @@ const SortArticle = () => {
     setIsError(false)
   }
   const sortOrder = (event) => {
-    if(sort===''){
-        setIsError(true)
-    }else{
-
-        setOrder(event.target.value)
+    if (sort === '') {
+      setIsError(true)
+    } else {
+      setOrder(event.target.value)
     }
   }
 
@@ -42,6 +44,7 @@ const SortArticle = () => {
     navigate({
       pathname: '/myfeed',
       search: createSearchParams({
+        topic,
         sort,
         order,
       }).toString(),
@@ -76,7 +79,7 @@ const SortArticle = () => {
       </Box>
       <Box className="order-article-box">
         <FormControl variant="standard" sx={{ minWidth: '70px' }}>
-          <InputLabel >Order</InputLabel>
+          <InputLabel>Order</InputLabel>
           <Select
             labelId="sort-by"
             id="sort-by"
@@ -93,7 +96,11 @@ const SortArticle = () => {
           </Select>
         </FormControl>
       </Box>
-        {isError && <p style={{color:'red',fontSize:'12px',marginLeft:'auto'}}>please select a filter to sort</p>}
+      {isError && (
+        <p style={{ color: 'red', fontSize: '12px', marginLeft: 'auto' }}>
+          please select a filter to sort
+        </p>
+      )}
     </>
   )
 }
