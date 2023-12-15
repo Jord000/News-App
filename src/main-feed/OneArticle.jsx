@@ -1,4 +1,4 @@
-import { Grid, Fab, Box, ButtonBase, createTheme, ThemeProvider } from "@mui/material"
+import { Grid, Fab, Box, ButtonBase, createTheme, ThemeProvider, duration } from "@mui/material"
 import { truncateText } from "../../utils/truncateText"
 import MoreIcon from '@mui/icons-material/More';
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -46,12 +46,23 @@ const OneArticle = ({ article }) => {
                     padding: '10px',
                     borderRadius: '8px',
                     filter: 'drop-shadow(2px 2px 4px grey)',
-                    transition: 'background-color .3s',
                     marginBottom: '30px',
+
 
                 }}
                 sx={{
-                    display: { xs: "block", md: 'flex' }
+                    display: { xs: "block", md: 'flex' },
+                    transition: theme.transitions.create("background-color 100s, box-shadow 100s"),
+                    "&:hover": {
+                        transition: '.5s ease',
+                        backgroundColor: '#cab5cc',
+                        boxShadow: '4px 4px 8px #666'
+                    },
+                    '&.active': {
+                        transform: translateY('4px'),
+                        backgroundColor: 'black',
+                    },
+
                 }}
             >   <ConditionalScreenDiv size={1000} className={"main-feed-conditional-wrapper"}>
                     <div className="main-feed-title-img-container">
@@ -82,7 +93,7 @@ const OneArticle = ({ article }) => {
                     alt={`image relating to ${title}`}
                 />}
             </Grid >
-        </ThemeProvider>
+        </ThemeProvider >
     </>
 }
 
