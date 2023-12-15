@@ -26,7 +26,8 @@ body {
 
 .title-feed {
   font-size: 2.2em;
-  margin-bottom: 10px;
+  margin-top: 0px;
+  margin-bottom: 3px;
 
 }
 
@@ -54,7 +55,22 @@ body {
   }
 
   .title-feed {
-    font-size: 4vw
+    font-size: 4.5vw;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .title {
+    font-size: 10vw;
+
+  }
+
+  .title-feed {
+    font-size: 3vw;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 }
 
@@ -172,7 +188,7 @@ p {
 #comment-id-votes-date-sidebar {
   font-size: 10px;
   margin-top: 5px;
-  margin-bottom: 15px
+  margin-bottom: 0px
 }
 
 @media (min-width: 550px) {
@@ -194,6 +210,7 @@ p {
 
   #comment-id-votes-date-sidebar {
     font-size: 1.6vw;
+    margin-bottom: 5px;
   }
 }
 
@@ -216,6 +233,29 @@ p {
 
   #comment-id-votes-date-sidebar {
     font-size: 1.4vw;
+    margin-bottom: 10px;
+  }
+}
+
+@media (min-width: 1100px) {
+  #comment-header {
+    font-size: 2.5vw
+  }
+
+  #comment-header-sidebar {
+    font-size: 1.5vw;
+  }
+
+  #comment-author-sidebar {
+    font-size: 1.2vw;
+  }
+
+  #comment-body-sidebar {
+    font-size: 1.5vw;
+  }
+
+  #comment-id-votes-date-sidebar {
+    font-size: 1.2vw;
   }
 }
 
@@ -244,7 +284,7 @@ h2 {
 
 
 .main-feed-article-title {
-  font-size: 20px;
+  font-size: 4.2vw;
 }
 
 .article-author {
@@ -282,6 +322,13 @@ h2 {
   }
 }
 
+@media (min-width: 500px) {
+  .main-feed-article-title {
+    font-size: 4vw;
+
+  }
+}
+
 @media (min-width: 650px) {
   .main-feed-article-title {
     font-size: 3vw;
@@ -295,6 +342,23 @@ h2 {
 
   .article-detail {
     font-size: 1.8vw;
+    margin-bottom: 8px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .main-feed-article-title {
+    font-size: 2.5vw;
+
+  }
+
+  .small-article-body {
+    font-size: 1.5vw;
+
+  }
+
+  .article-detail {
+    font-size: 1.2vw;
     margin-bottom: 8px;
   }
 }
@@ -355,6 +419,8 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   justify-content: right;
+  margin-left: auto;
+  margin-right: 10px;
 }
 
 .thumbs-up {
@@ -406,4 +472,55 @@ h2 {
   font-weight: 900;
   margin-left: 10px;
   margin-bottom: 20px;
+}
+
+.main-feed-article-img {
+  object-fit: cover;
+  width: 40%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.main-feed-conditional-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  width: 60%;
+
+}
+
+.main-feed-article-icon {
+
+  margin-right: 10px;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 10px;
+  aspect-ratio: 1/2.0;
+}
+
+@media(min-width: 400px) {
+  .main-feed-article-icon {
+    margin-right: 10px;
+    aspect-ratio: 1/2.5;
+  }
+}
+
+@media(min-width: 500px) {
+  .main-feed-article-icon {
+    aspect-ratio: 1/1.5;
+  }
+}
+
+@media(min-width: 650px) {
+  .main-feed-article-icon {
+
+    aspect-ratio: 1/1;
+  }
+}
+
+.main-feed-article-icon-container {
+  width: 60%;
+}
+
+.main-feed-title-img-container {
+  display: flex;
 }
