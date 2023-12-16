@@ -1,16 +1,9 @@
-import {
-  Grid,
-  Fab,
-  Box,
-  ButtonBase,
-  createTheme,
-  ThemeProvider,
-  duration,
-} from '@mui/material'
+import { Grid, Fab, createTheme, ThemeProvider } from '@mui/material'
 import { truncateText } from '../../utils/truncateText'
 import MoreIcon from '@mui/icons-material/More'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import ConditionalScreenDiv from '../tools-buttons/ConditionalScreenDiv'
 
 const OneArticle = ({ article }) => {
   const {
@@ -34,16 +27,6 @@ const OneArticle = ({ article }) => {
     xl: 1500,
   }
   const theme = createTheme({ breakpoints: { values: breakpointValues } })
-
-  const ConditionalScreenDiv = ({ style, className, size, children }) => {
-    return screen > size ? (
-      <div style={style} className={className}>
-        {children}
-      </div>
-    ) : (
-      <>{children}</>
-    )
-  }
 
   const handleResize = () => {
     setScreen(window.innerWidth)
@@ -89,6 +72,7 @@ const OneArticle = ({ article }) => {
         >
           {' '}
           <ConditionalScreenDiv
+          screen={screen}
             size={1000}
             className={'main-feed-conditional-wrapper'}
           >

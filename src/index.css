@@ -103,7 +103,7 @@ h2 {
   }
 
   .title-feed {
-    font-size: 3vw;
+    font-size: 4vw;
     margin-top: 10px;
     margin-bottom: 10px;
   }
@@ -357,7 +357,9 @@ h2 {
   margin-left: 20px;
   display: inline;
 }
-
+.landscape-container{
+  display: flex;
+}
 
 
 
