@@ -30,9 +30,6 @@ const OneArticle = ({ article }) => {
 
   const handleResize = () => {
     setScreen(window.innerWidth)
-    if (screen > 1000) {
-      articleDisplay = 'flex'
-    }
   }
 
   useEffect(() => {
@@ -51,21 +48,19 @@ const OneArticle = ({ article }) => {
           onClick={() => {
             navigate(`/myfeed/${article_id}`)
           }}
-          style={{
+          sx={{
             backgroundColor: 'rgb(249, 245, 250)',
             padding: '10px',
             borderRadius: '8px',
             filter: 'drop-shadow(2px 2px 4px grey)',
             marginBottom: '30px',
-          }}
-          sx={{
             display: { xs: 'block', md: 'flex' },
             transition: theme.transitions.create(
               'background-color 100s, box-shadow 100s'
             ),
             '&:hover': {
               transition: '.5s ease',
-              backgroundColor: '#cab5cc',
+              backgroundColor: 'white',
               boxShadow: '4px 4px 8px #666',
             },
           }}

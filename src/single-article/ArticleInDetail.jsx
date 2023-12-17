@@ -69,11 +69,13 @@ const ArticleInDetail = () => {
               <h2 className="article-in-detail-title">{foundArticle.title}</h2>
               <p className="article-author"> By {foundArticle.author}</p>
             </div>
+            <div className='article-image-container'>
             <img
               className="article-image"
               src={foundArticle.article_img_url}
               alt={`image relating to ${foundArticle.title}`}
             />
+            </div>
           </ConditionalScreenDiv>
           <p className="found-article-body">{foundArticle.body}</p>
           <div className="found-article-votes">
