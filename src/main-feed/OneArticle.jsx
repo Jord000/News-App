@@ -59,8 +59,7 @@ const OneArticle = ({ article }) => {
                         boxShadow: '4px 4px 8px #666'
                     },
                     '&.active': {
-                        transform: translateY('4px'),
-                        backgroundColor: 'black',
+                        transform: 'translateY(10px)',
                     },
 
                 }}
