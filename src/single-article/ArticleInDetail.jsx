@@ -65,9 +65,10 @@ const ArticleInDetail = () => {
             size={900}
             className={'landscape-container'}
           >
-            <div>
+            <div className='article-container'>
               <h2 className="article-in-detail-title">{foundArticle.title}</h2>
               <p className="article-author"> By {foundArticle.author}</p>
+              {screen > 900 && <p className="found-article-body">{foundArticle.body}</p>}
             </div>
             <div className='article-image-container'>
               <img
@@ -77,7 +78,9 @@ const ArticleInDetail = () => {
               />
             </div>
           </ConditionalScreenDiv>
-          <p className="found-article-body">{foundArticle.body}</p>
+
+          {screen < 900 && <p className="found-article-body">{foundArticle.body}</p>}
+
         </div>
         <div className="found-article-votes-comment">
           <VotingButton votes={foundArticle.votes} id={id} />

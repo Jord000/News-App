@@ -3,8 +3,10 @@ import { useEffect, useState } from 'react'
 import { createSearchParams, useNavigate, useSearchParams } from 'react-router-dom'
 
 
-const SortArticle = ({ sort, order, setOrder, setSort }) => {
+const SortArticle = ({ sort, order, setOrder, setSort, screen }) => {
   const navigate = useNavigate()
+  const sortWidth = screen > 1000 ? '140px' : '70px'
+  const sortFontSize = screen > 1000 ? '20px' : '16px'
 
   const [isError, setIsError] = useState(false)
   let [searchParams, setSearchParams] = useSearchParams()
@@ -32,8 +34,12 @@ const SortArticle = ({ sort, order, setOrder, setSort }) => {
   }, [sort, order])
 
   const sortSelect = (event) => {
-    setSort(event.target.value)
-    setIsError(false)
+    if (sort === 'none') {
+      setSort('')
+    } else {
+      setSort(event.target.value)
+      setIsError(false)
+    }
   }
   const sortOrder = (event) => {
     if (sort === '') {
@@ -56,18 +62,19 @@ const SortArticle = ({ sort, order, setOrder, setSort }) => {
 
   return (
     <>
-      <Box className="filter-article-box">
-        <FormControl variant="standard" sx={{ minWidth: '70px' }}>
-          <InputLabel  >filter</InputLabel>
+      <Box className="filter-article-box" >
+        <FormControl variant="standard" sx={{ minWidth: sortWidth }} >
+          <InputLabel sx={{ fontSize: sortFontSize, }}>filter</InputLabel>
           <Select
-            sx={{ minHeight: '40px', fontSize: '12px' }}
+            sx={{ minHeight: '40px', fontSize: '16px', }}
             labelId="sort-by"
             id="sort-by"
             value={sort}
             onChange={sortSelect}
             label="sort"
-            MenuProps={{ PaperProps: { sx: { minHeight: 50 } } }}
+
           >
+            <MenuItem value='' >None</MenuItem>
             {acceptedSorts.map((sort) => {
               return (
                 <MenuItem key={sort} value={sort} >
@@ -80,8 +87,8 @@ const SortArticle = ({ sort, order, setOrder, setSort }) => {
         </FormControl>
       </Box>
       <Box className="order-article-box">
-        <FormControl variant="standard" sx={{ minWidth: '70px' }}>
-          <InputLabel>Order</InputLabel>
+        <FormControl variant="standard" sx={{ minWidth: sortWidth }}>
+          <InputLabel sx={{ fontSize: sortFontSize, }}>Order</InputLabel>
           <Select
             sx={{ minHeight: '40px', fontSize: '12px' }}
             labelId="order-by"
@@ -100,7 +107,7 @@ const SortArticle = ({ sort, order, setOrder, setSort }) => {
         </FormControl>
       </Box>
       {isError && (
-        <p style={{ color: 'red', fontSize: '12px', marginLeft: 'auto' }}>
+        <p style={{ color: 'red', fontSize: '12px', marginLeft: '10px' }}>
           please select a filter to sort
         </p>
       )}
