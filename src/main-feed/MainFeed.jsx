@@ -41,8 +41,9 @@ const MainFeed = () => {
 
   if (isLoading) {
     return (
-      <Box sx={{ display: 'flex' }}>
-        <CircularProgress />
+      <Box sx={{ display: 'flex', width:'100%' ,justifyContent:'center',marginTop:'40px'}}>
+        <CircularProgress size="6rem" sx={{
+        }}/>
       </Box>
     )
   }
