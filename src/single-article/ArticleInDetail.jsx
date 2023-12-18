@@ -70,19 +70,19 @@ const ArticleInDetail = () => {
               <p className="article-author"> By {foundArticle.author}</p>
             </div>
             <div className='article-image-container'>
-            <img
-              className="article-image"
-              src={foundArticle.article_img_url}
-              alt={`image relating to ${foundArticle.title}`}
-            />
+              <img
+                className="article-image"
+                src={foundArticle.article_img_url}
+                alt={`image relating to ${foundArticle.title}`}
+              />
             </div>
           </ConditionalScreenDiv>
           <p className="found-article-body">{foundArticle.body}</p>
-          <div className="found-article-votes">
-            <VotingButton votes={foundArticle.votes} id={id} />
-          </div>
         </div>
-        <AddComment id={id} comments={comments} setComments={setComments} />
+        <div className="found-article-votes-comment">
+          <VotingButton votes={foundArticle.votes} id={id} />
+          <AddComment id={id} comments={comments} setComments={setComments} />
+        </div>
         <CommentsById id={id} comments={comments} setComments={setComments} />
       </>
     )

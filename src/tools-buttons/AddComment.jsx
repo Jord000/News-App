@@ -24,7 +24,7 @@ const AddComment = ({ id, comments, setComments }) => {
         created_at: 'right now',
         votes: 0,
       }
-      setComments([tempComment,...comments])
+      setComments([tempComment, ...comments])
       postCommentToArticle(userComment, username, id).then(() => {
         setCommentSeed(!commentSeed)
         setCommentColor('default')
@@ -40,13 +40,17 @@ const AddComment = ({ id, comments, setComments }) => {
 
   return (
     <Box className="comment-input-container">
+
       <TextField
         className="comment-input"
         variant="outlined"
         label="Comment"
         value={userComment}
         onChange={inputHandler}
+        multiline
+        fullWidth
       ></TextField>
+
       <Box className="comment-button-container">
         <Fab onClick={submitCommentHandler} color={commentColor}>
           <AddCommentIcon />

@@ -45,7 +45,7 @@ const LogInPage = () => {
 
     if (isLoading) {
         return (
-            <Box sx={{ width: '100%' }}>
+            <Box sx={{ width: '100%', margin: '10px' }}>
                 <LinearProgress />
             </Box>)
     }

@@ -44,7 +44,7 @@ const VotingButton = ({ id, votes }) => {
   }
 
   return (
-    <>
+    <div className='votes-container'>
       <Box className="thumbs-up">
         <p style={{ display: 'inline', marginRight: '20px' }}>
           Votes: {currVotes}
@@ -58,7 +58,7 @@ const VotingButton = ({ id, votes }) => {
           <ThumbDownIcon />
         </Fab>
       </Box>
-    </>
+    </div>
   )
 }
 

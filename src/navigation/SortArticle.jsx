@@ -58,7 +58,7 @@ const SortArticle = ({ sort, order, setOrder, setSort }) => {
     <>
       <Box className="filter-article-box">
         <FormControl variant="standard" sx={{ minWidth: '70px' }}>
-          <InputLabel >filter</InputLabel>
+          <InputLabel  >filter</InputLabel>
           <Select
             sx={{ minHeight: '40px', fontSize: '12px' }}
             labelId="sort-by"
@@ -70,7 +70,7 @@ const SortArticle = ({ sort, order, setOrder, setSort }) => {
           >
             {acceptedSorts.map((sort) => {
               return (
-                <MenuItem key={sort} value={sort}>
+                <MenuItem key={sort} value={sort} >
                   {sort.charAt(0).toUpperCase() +
                     sort.slice(1).replace(/_/g, ' ')}
                 </MenuItem>
