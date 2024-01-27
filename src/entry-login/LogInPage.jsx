@@ -45,7 +45,8 @@ const LogInPage = () => {
 
     if (isLoading) {
         return (
-            <Box sx={{ width: '100%', margin: '10px' }}>
+            <Box sx={{ width: '95%', marginLeft: 'auto',marginRight:'auto' }}>
+                <h2 className="patience">Thank you for your patience while the data loads...</h2>
                 <LinearProgress />
             </Box>)
     }

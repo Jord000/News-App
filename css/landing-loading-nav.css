@@ -6,6 +6,12 @@
   
   /* loading page */
   
+.patience{
+font-size: 1.5em;
+margin-top: 2vh;
+margin-bottom: 2vh;
+}
+
   .logged-in-text {
     margin-left: auto;
     font-size: 0.8em;

@@ -25,7 +25,6 @@ const MainFeed = () => {
   }, [])
 
   useEffect(() => {
-    setIsLoading(true)
     getArticles(topic, sort, order)
       .then((articles) => {
         if (articles.error) {
