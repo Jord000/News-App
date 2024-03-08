@@ -1,23 +1,24 @@
 import { useContext, useState } from 'react'
-import { Fab, TextField, Box } from '@mui/material/'
-import AddCommentIcon from '@mui/icons-material/AddComment'
 import { postCommentToArticle } from '../../api/api'
 import { UsernameContext } from '../../contexts/UsernameContext'
 import { CommentSeedContext } from '../../contexts/CommentSeedContext'
+import { Fab, TextField } from '@mui/material/'
+import AddCommentIcon from '@mui/icons-material/AddComment'
 
 const AddComment = ({ id, comments, setComments }) => {
-  const { commentSeed, setCommentSeed } = useContext(CommentSeedContext)
   const { username } = useContext(UsernameContext)
+  const { commentSeed, setCommentSeed } = useContext(CommentSeedContext)
   const [userComment, setUserComment] = useState('')
   const [commentColor, setCommentColor] = useState('default')
 
   const submitCommentHandler = () => {
-    if (userComment.length < 1 || userComment === ' ') {
+
+    if (userComment.length < 1 || !(/[a-zA-Z]/g).test(userComment)) {
       setCommentColor('error')
     } else {
       setCommentColor('secondary')
       const tempComment = {
-        article_id: 0,
+        article_id: id,
         author: username,
         body: userComment,
         comment_id: 0,
@@ -39,7 +40,7 @@ const AddComment = ({ id, comments, setComments }) => {
   }
 
   return (
-    <Box className="comment-input-container">
+    <div className="comment-input-container">
 
       <TextField
         className="comment-input"
@@ -51,15 +52,15 @@ const AddComment = ({ id, comments, setComments }) => {
         fullWidth
       ></TextField>
 
-      <Box className="comment-button-container">
+      <div className="comment-button-container">
         <Fab onClick={submitCommentHandler} color={commentColor}>
           <AddCommentIcon />
         </Fab>
-      </Box>
+      </div>
       {commentColor === 'error' && (
         <p style={{ color: 'red' }}>please enter a comment to submit</p>
       )}
-    </Box>
+    </div>
   )
 }
 
