@@ -1,14 +1,20 @@
 import axios from 'axios'
+import 'dotenv/config'
+
+const anonKey = `apikey=${process.env.ANON_KEY}`
 
 const newsApi = axios.create({
-  baseURL: 'https://news-app-87li.onrender.com/api',
+  // baseURL: 'https://news-app-87li.onrender.com/api',
+ baseURL: `https://tqfnebakfgoxiefjxbpz.supabase.co/rest/v1/`
 })
 
-export const getUsernames = () => {
-  return newsApi.get('/users').then(({ data }) => {
-    return data.users
+export const getUsernames = async () => {
+  return newsApi.get(`/users?${anonKey}`).then(({ data }) => {
+    return data
   })
 }
+
+
 
 export const getArticles = (topic, sort, order) => {
   return newsApi
