@@ -1,31 +1,38 @@
 import axios from 'axios'
 import 'dotenv/config'
+import { createClient } from '@supabase/supabase-js'
 
-const anonKey = `apikey=${process.env.ANON_KEY}`
-
-const newsApi = axios.create({
-  // baseURL: 'https://news-app-87li.onrender.com/api',
- baseURL: `https://tqfnebakfgoxiefjxbpz.supabase.co/rest/v1/`
-})
+const supabase = createClient(
+  'https://tqfnebakfgoxiefjxbpz.supabase.co',
+  process.env.ANON_KEY
+)
 
 export const getUsernames = async () => {
-  return newsApi.get(`/users?${anonKey}`).then(({ data }) => {
-    return data
-  })
+  let { data: users, error } = await supabase.from('users').select('*')
+
+  return users
 }
 
+export const getArticles = async (topic, sort, order) => {
+  // return newsApi
+  //   .get('/articles', { params: { topic, sort_by: sort, order } })
+  //   .then(({ data }) => {
+  //     return data.articles
+  //   })
+  //   .catch((error) => {
+  //     return { error }
+  //   })
 
-
-export const getArticles = (topic, sort, order) => {
-  return newsApi
-    .get('/articles', { params: { topic, sort_by: sort, order } })
-    .then(({ data }) => {
-      return data.articles
-    })
-    .catch((error) => {
-      return { error }
-    })
+  if (topic) {
+    let { data: articles, error } = await supabase
+      .from('articles')
+      .select('*')
+      .eq('topic', `${topic}`)
+    return articles
+  }
 }
+
+console.log(await getArticles('coding'))
 
 export const getArticleById = (id) => {
   const articleName = `article${id}`
