@@ -22,17 +22,25 @@ export const getArticles = async (topic, sort, order) => {
   //   .catch((error) => {
   //     return { error }
   //   })
+  const orderBool = order === 'DESC' ? false : true
 
-  if (topic) {
+  if (topic && !sort && !order) {
     let { data: articles, error } = await supabase
       .from('articles')
       .select('*')
       .eq('topic', `${topic}`)
     return articles
+  } else if (topic && sort) {
+    let { data: articles, error } = await supabase
+      .from('articles')
+      .select('*')
+      .eq('topic', `${topic}`)
+      .order(sort, { ascending: orderBool })
+    return articles
   }
 }
 
-console.log(await getArticles('coding'))
+console.log(await getArticles('coding', 'article_id'))
 
 export const getArticleById = (id) => {
   const articleName = `article${id}`
