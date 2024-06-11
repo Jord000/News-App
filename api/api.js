@@ -10,49 +10,37 @@ const supabase = createClient(
 export const getUsernames = async () => {
   let { data: users, error } = await supabase.from('users').select('*')
 
-  return users
+  return error ? error : users
 }
 
 export const getArticles = async (topic, sort, order) => {
-  // return newsApi
-  //   .get('/articles', { params: { topic, sort_by: sort, order } })
-  //   .then(({ data }) => {
-  //     return data.articles
-  //   })
-  //   .catch((error) => {
-  //     return { error }
-  //   })
   const orderBool = order === 'DESC' ? false : true
 
   if (topic && !sort && !order) {
-    let { data: articles, error } = await supabase
+    const { data: articles, error } = await supabase
       .from('articles')
       .select('*')
       .eq('topic', `${topic}`)
-    return articles
+    return error ? error : articles
   } else if (topic && sort) {
-    let { data: articles, error } = await supabase
+    const { data: articles, error } = await supabase
       .from('articles')
       .select('*')
       .eq('topic', `${topic}`)
       .order(sort, { ascending: orderBool })
-    return articles
+    return error ? error : articles
   }
 }
 
-console.log(await getArticles('coding', 'article_id'))
-
-export const getArticleById = (id) => {
-  const articleName = `article${id}`
-  return newsApi
-    .get(`/articles/${id}`)
-    .then(({ data: { [articleName]: article } }) => {
-      return article
-    })
-    .catch((error) => {
-      return { error }
-    })
+export const getArticleById = async (id) => {
+  let { data: articles, error } = await supabase
+    .from('articles')
+    .select('*')
+    .eq('article_id', `${id}`)
+  return error ? error : articles
 }
+
+//
 
 export const getCommentsById = (id) => {
   return newsApi
