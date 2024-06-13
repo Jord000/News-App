@@ -33,25 +33,22 @@ export const getArticles = async (topic, sort, order) => {
 }
 
 export const getArticleById = async (id) => {
-  let { data: articles, error } = await supabase
+  const { data: articles, error } = await supabase
     .from('articles')
     .select('*')
     .eq('article_id', `${id}`)
   return error ? error : articles
 }
 
-//
-
-export const getCommentsById = (id) => {
-  return newsApi
-    .get(`/articles/${id}/comments`)
-    .then(({ data: { comments } }) => {
-      return comments
-    })
-    .catch((error) => {
-      return { error }
-    })
+export const getCommentsById = async (id) => {
+  const { data: comments, error } = await supabase
+    .from('comments')
+    .select('*')
+    .eq('comment_id', `${id}`)
+  return error ? error : comments
 }
+
+//
 
 export const addVotesToArticleId = (votes, id) => {
   const patchBody = { inc_votes: votes }
