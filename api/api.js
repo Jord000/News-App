@@ -77,14 +77,17 @@ export const getAllTopics = async () => {
   return error ? error : topics
 }
 
-//
 
-export const postCommentToArticle = (userComment, username, id) => {
-  const postBody = { username, body: userComment }
-  return newsApi.post(`/articles/${id}/comments`, postBody).then((data) => {
-    return data
-  })
-}
+export const postCommentToArticle = async (userComment, author, articleId)=>{
+  const { data: commentResponse, error } = await supabase
+  .from('comments')
+  .insert([
+    { body: userComment, author: author, article_id: articleId },
+  ])
+  .select()
+
+  return error ? error : commentResponse
+} 
 
 export const deleteCommentById = (id) => {
   return newsApi.delete(`/comments/${id}`).catch((error) => {
