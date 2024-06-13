@@ -48,19 +48,29 @@ export const getCommentsById = async (id) => {
   return error ? error : comments
 }
 
-//
+export const addVotesToArticleId = async (votes, id) => {
+  const { data: currVotes, errorOne } = await supabase
+    .from('articles')
+    .select('votes')
+    .eq('article_id', `${id}`)
 
-export const addVotesToArticleId = (votes, id) => {
-  const patchBody = { inc_votes: votes }
-  return newsApi
-    .patch(`/articles/${id}`, patchBody)
-    .then((data) => {
-      return data
-    })
-    .catch((error) => {
-      return { error }
-    })
+  const newVoteNum = currVotes[0].votes + votes
+
+  if (errorOne) {
+    return errorOne
+  }
+
+  const { data, errorTwo } = await supabase
+    .from('articles')
+    .update({ votes: newVoteNum })
+    .eq('article_id', id)
+    .select()
+
+  return errorTwo ? errorTwo : data
 }
+
+
+//
 
 export const getAllTopics = () => {
   return newsApi
