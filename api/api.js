@@ -44,9 +44,11 @@ export const getCommentsById = async (id) => {
   const { data: comments, error } = await supabase
     .from('comments')
     .select('*')
-    .eq('comment_id', `${id}`)
+    .eq('article_id', `${id}`)
   return error ? error : comments
 }
+
+
 
 export const addVotesToArticleId = async (votes, id) => {
   const { data: currVotes, errorOne } = await supabase
