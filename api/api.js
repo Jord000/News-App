@@ -69,19 +69,13 @@ export const addVotesToArticleId = async (votes, id) => {
   return errorTwo ? errorTwo : data
 }
 
+export const getAllTopics = async () => {
+  const { data: topics, error } = await supabase.from('topics').select('*')
+
+  return error ? error : topics
+}
 
 //
-
-export const getAllTopics = () => {
-  return newsApi
-    .get(`/topics/`)
-    .then(({ data: { topics } }) => {
-      return topics
-    })
-    .catch((error) => {
-      return { error }
-    })
-}
 
 export const postCommentToArticle = (userComment, username, id) => {
   const postBody = { username, body: userComment }
