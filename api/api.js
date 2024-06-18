@@ -84,8 +84,14 @@ export const postCommentToArticle = async (userComment, author, articleId) => {
   return error ? error : commentResponse
 }
 
-export const deleteCommentById = (id) => {
-  return newsApi.delete(`/comments/${id}`).catch((error) => {
-    return { error }
-  })
+export const deleteCommentById = async (id) => {
+  const {data, error } = await supabase
+  .from('comments')
+  .delete()
+  .eq('comment_id', id).select()
+  
+  if(!data.length){throw 'No comment found - nothing deleted'}
+
+  return error ? error : {deletedItem: data}
 }
+
