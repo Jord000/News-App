@@ -1,10 +1,11 @@
-import axios from 'axios'
-import 'dotenv/config'
 import { createClient } from '@supabase/supabase-js'
 
+const key = import.meta.env.VITE_ANON_KEY
+
+
 const supabase = createClient(
-  'https://tqfnebakfgoxiefjxbpz.supabase.co',
-  process.env.ANON_KEY
+  'https://tqfnebakfgoxiefjxbpz.supabase.co', key
+
 )
 
 export const getUsernames = async () => {
@@ -29,8 +30,15 @@ export const getArticles = async (topic, sort, order) => {
       .eq('topic', `${topic}`)
       .order(sort, { ascending: orderBool })
     return error ? error : articles
+  } else if(!topic){
+    const { data: articles, error } = await supabase
+      .from('articles')
+      .select('*')
+      return error ? error : articles
   }
 }
+
+
 
 export const getArticleById = async (id) => {
   const { data: articles, error } = await supabase

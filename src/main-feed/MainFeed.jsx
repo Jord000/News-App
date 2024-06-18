@@ -14,6 +14,7 @@ const MainFeed = () => {
   const navigate = useNavigate()
   let [searchParams, setSearchParams] = useSearchParams()
 
+
   const topic = searchParams.get('topic')
   const sort = searchParams.get('sort')
   const order = searchParams.get('order')
@@ -24,18 +25,23 @@ const MainFeed = () => {
     }
   }, [])
 
-  useEffect(() => {
-    getArticles(topic, sort, order)
-      .then((articles) => {
-        if (articles.error) {
-          navigate('/errorpage')
-        } else {
-          setAllArticles(articles)
-        }
-      })
-      .then(() => {
-        setIsLoading(false)
-      })
+  useEffect(async () => {
+   try{
+    const articles = await getArticles(topic, sort, order)}
+    catch (error){
+      console.log(error)
+    }
+      // .then((articles) => {
+      //   console.log(articles)
+      //   if (articles.error) {
+      //     navigate('/errorpage')
+      //   } else {
+      //     setAllArticles(articles)
+      //   }
+      // })
+      // .then(() => {
+      //   setIsLoading(false)
+      // })
   }, [topic, sort, order])
 
   if (isLoading) {
