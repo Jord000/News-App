@@ -23,6 +23,9 @@ export const getArticles = async (topic, sort, order) => {
       ? (articlesQuery = articlesQuery.order(sort, { ascending: !orderBool }))
       : (articlesQuery = articlesQuery.order(sort, { ascending: orderBool }));
   }
+  else{
+    articlesQuery = articlesQuery.order("created_at", { ascending: false })
+  }
 
   const { data, error } = await articlesQuery;
 
