@@ -41,7 +41,8 @@ export const getCommentsById = async (id) => {
   const { data: comments, error } = await supabase
     .from("comments")
     .select("*")
-    .eq("article_id", `${id}`);
+    .eq("article_id", `${id}`)
+    .order("created_at", { ascending: false })
   return error ? error : comments;
 };
 
