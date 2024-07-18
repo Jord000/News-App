@@ -1,65 +1,83 @@
-import { getArticles } from '../../api/api'
-import { useEffect, useState } from 'react'
-import OneArticle from './OneArticle'
-import ArticleComments from './ArticleComments.jsx'
-import { Box, Grid, CircularProgress } from '@mui/material'
-import { useContext } from 'react'
-import { UsernameContext } from '../../contexts/UsernameContext.jsx'
-import { useNavigate, useSearchParams } from 'react-router-dom'
+import { getArticles } from "../../api/api";
+import { useEffect, useState } from "react";
+import OneArticle from "./OneArticle";
+import ArticleComments from "./ArticleComments.jsx";
+import { Box, Grid, CircularProgress } from "@mui/material";
+import { useContext } from "react";
+import { UsernameContext } from "../../contexts/UsernameContext.jsx";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const MainFeed = () => {
-  const [allArticles, setAllArticles] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
-  const { username } = useContext(UsernameContext)
-  const navigate = useNavigate()
-  let [searchParams, setSearchParams] = useSearchParams()
+  const [allArticles, setAllArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const { username } = useContext(UsernameContext);
+  const navigate = useNavigate();
+  let [searchParams, setSearchParams] = useSearchParams();
 
-  const topic = searchParams.get('topic')
-  const sort = searchParams.get('sort')
-  const order = searchParams.get('order')
+  const topic = searchParams.get("topic");
+  const sort = searchParams.get("sort");
+  const order = searchParams.get("order");
 
   useEffect(() => {
     if (!username) {
-      navigate('/')
+      navigate("/");
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
-    getArticles(topic, sort, order)
-      .then((articles) => {
+    async function Feed() {
+      try {
+        const articles = await getArticles(topic, sort, order);
         if (articles.error) {
-          navigate('/errorpage')
+          navigate("/errorpage");
         } else {
-          setAllArticles(articles)
+          setAllArticles(articles);
         }
-      })
-      .then(() => {
-        setIsLoading(false)
-      })
-  }, [topic, sort, order])
+      } catch (error) {
+        console.log(error);
+        navigate("/errorpage");
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    Feed().catch(console.error);
+
+
+  }, [topic, sort, order]);
 
   if (isLoading) {
     return (
-      <Box sx={{ display: 'flex', width:'100%' ,justifyContent:'center',marginTop:'40px'}}>
-        <CircularProgress size="6rem" sx={{
-        }}/>
+      <Box
+        sx={{
+          display: "flex",
+          width: "100%",
+          justifyContent: "center",
+          marginTop: "40px",
+        }}
+      >
+        <CircularProgress size="6rem" sx={{}} />
       </Box>
-    )
+    );
   }
   {
     return (
       <Box id="main-feed-box" className="main-feed-box">
         {allArticles.map((article) => {
           return (
-            <Grid container direction="row" spacing={2} key={article.article_id}>
+            <Grid
+              container
+              direction="row"
+              spacing={2}
+              key={article.article_id}
+            >
               <OneArticle article={article} key={article.id} />
               <ArticleComments article={article} key={article} />
             </Grid>
-          )
+          );
         })}
       </Box>
-    )
+    );
   }
-}
+};
 
-export default MainFeed
+export default MainFeed;
