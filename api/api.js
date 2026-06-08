@@ -2,7 +2,7 @@ import { createClient } from "@supabase/supabase-js";
 
 const key = import.meta.env.VITE_ANON_KEY;
 
-const supabase = createClient("https://tqfnebakfgoxiefjxbpz.supabase.co", key);
+const supabase = createClient("https://rhpfbuvbvstgxwyerkeh.supabase.co", key);
 
 export const getUsernames = async () => {
   let { data: users, error } = await supabase.from("users").select("*");
@@ -22,9 +22,8 @@ export const getArticles = async (topic, sort, order) => {
     sort === "votes"
       ? (articlesQuery = articlesQuery.order(sort, { ascending: !orderBool }))
       : (articlesQuery = articlesQuery.order(sort, { ascending: orderBool }));
-  }
-  else{
-    articlesQuery = articlesQuery.order("created_at", { ascending: false })
+  } else {
+    articlesQuery = articlesQuery.order("created_at", { ascending: false });
   }
 
   const { data, error } = await articlesQuery;
@@ -45,7 +44,7 @@ export const getCommentsById = async (id) => {
     .from("comments")
     .select("*")
     .eq("article_id", `${id}`)
-    .order("created_at", { ascending: false })
+    .order("created_at", { ascending: false });
   return error ? error : comments;
 };
 
