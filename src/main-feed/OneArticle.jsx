@@ -1,6 +1,6 @@
 import { Grid, Fab, createTheme, ThemeProvider } from '@mui/material'
 import { truncateText } from '../../utils/truncateText'
-import MoreIcon from '@mui/icons-material/More'
+import { More as MoreIcon } from '@mui/icons-material'
 import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import ConditionalScreenDiv from '../tools-buttons/ConditionalScreenDiv'

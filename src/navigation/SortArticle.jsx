@@ -28,9 +28,7 @@ const SortArticle = ({ sort, order, setOrder, setSort, screen }) => {
   ]
 
   useEffect(() => {
-    if (sort !== '') {
       navigateToSortBy(sort, order)
-    }
   }, [sort, order])
 
   const sortSelect = (event) => {
